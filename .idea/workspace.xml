@@ -21,6 +21,9 @@
       </list>
     </option>
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" root0="SKIP_INSPECTION" root1="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="PackageJsonUpdateNotifier">
     <dismissed value="$PROJECT_DIR$/package.json" />
   </component>
@@ -157,7 +160,7 @@
       <workItem from="1600893763009" duration="1487000" />
       <workItem from="1600948630225" duration="12265000" />
       <workItem from="1601059877305" duration="3948000" />
-      <workItem from="1602106790987" duration="6716000" />
+      <workItem from="1602106790987" duration="15960000" />
     </task>
     <servers />
   </component>
@@ -177,9 +180,9 @@
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state x="496" y="233" key="run.anything.popup/0.0.1680.1010@0.0.1680.1010" timestamp="1601064942394" />
-    <state x="503" y="217" width="672" height="678" key="search.everywhere.popup" timestamp="1602114914898">
+    <state x="503" y="217" width="672" height="678" key="search.everywhere.popup" timestamp="1602123799088">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state x="503" y="217" width="672" height="678" key="search.everywhere.popup/0.0.1680.1010@0.0.1680.1010" timestamp="1602114914898" />
+    <state x="503" y="217" width="672" height="678" key="search.everywhere.popup/0.0.1680.1010@0.0.1680.1010" timestamp="1602123799088" />
   </component>
 </project>

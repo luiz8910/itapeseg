@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Mail\ForgotPassword;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class LoginController extends Controller
 {
@@ -36,5 +39,33 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    //Send link when forgot password button was clicked
+    public function send_link_reset_pass($email)
+    {
+        try {
+            Mail::to($email)->send(new ForgotPassword());
+
+            return json_encode(['status' => true]);
+        }
+        catch (\Exception $e)
+        {
+            dd($e->getMessage());
+            //return json_encode(['status' => false, $e->getMessage()]);
+        }
+
+    }
+
+    //$id = user id
+    public function new_password_view($id = null)
+    {
+
+    }
+
+    //$id = user id
+    public function new_password(Request $request, $id)
+    {
+
     }
 }

@@ -21,23 +21,20 @@
                 <div class="panel panel-default panel-border-color panel-border-color-primary">
                     <div class="panel-heading">
                         <img src="http://itapesegdistribuidora.com.br/images/logo.png" alt="logo" width="110" height="42" class="logo-img">
-                        <span class="splash-description">Esqueceu sua senha?</span>
+                        <span class="splash-description">Redefina sua senha?</span>
                     </div>
                     <div class="panel-body">
-
-                        <p>Não se preocupe, vamos lhe enviar um email com as informações de recuperação de senha</p>
+                        <p>Digite sua nova senha nos campos abaixo</p>
                         <div class="form-group xs-pt-20">
-                            <input type="email" name="email" required placeholder="Seu Email" autocomplete="off"
-                                   class="form-control" id="email">
+                            <input type="password" name="password" required placeholder="Sua nova senha" autocomplete="off" class="form-control" id="password">
+                        </div>
+                        <div class="form-group xs-pt-20">
+                            <input type="password" required placeholder="Confirme sua senha" autocomplete="off" class="form-control" id="password_confirm">
                         </div>
                         <p class="xs-pt-5 xs-pb-20 text-center"><a href="{{ url('/login') }}">Voltar para login</a></p>
                         <div class="form-group xs-pt-5">
-                            <button type="submit" class="btn btn-block btn-primary btn-xl" id="forgot_password" onclick="forgot_password();">Recuperar senha</button>
-                            <div class="progress" style="display:none;">
-                                <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%; display:none;"></div>
-                            </div>
+                            <button type="submit" class="btn btn-block btn-primary btn-xl" onclick="new_password();">Recuperar senha</button>
                         </div>
-
                     </div>
                 </div>
 
@@ -51,7 +48,6 @@
 <script src="../../assets/lib/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="../../js/email.js" type="text/javascript"></script>
 <script src="../../js/common.js" type="text/javascript"></script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
         //initialize the javascript
