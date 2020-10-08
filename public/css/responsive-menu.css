@@ -1,0 +1,137 @@
+#mobnav-btn {
+    display: none;
+    font-size: 13px;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 14px 0px;
+    cursor: pointer;
+    color: #636363;
+    border-bottom: 1px solid #EDEDED;
+}
+
+#mobnav-btn span {
+    display: inline-block;
+    margin-top: 2px;
+    padding-right: 8px;
+    font-size: 12px;
+}
+
+.mobnav-subarrow {
+    display: none;
+}
+
+@media only screen and (max-width: 980px) {
+
+    .logo {
+
+    }
+
+    .menu_bg{
+        height: 54px;
+    }
+
+    #main-menu ul li a span {
+        height: 16px;
+        padding: 23px 8px;
+    }
+
+    #main-menu ul li {
+        border-bottom: 1px solid #EDEDED;
+        float: left;
+        padding: 20px 0;
+    }
+
+    #main-menu ul li a {
+
+    }
+
+    #main-menu ul li {
+        margin: 0px!important;
+    }
+
+    #mobnav-btn {
+        display: block;
+    }
+
+    .mobnav-subarrow {
+        color: #636363;
+        cursor: pointer;
+        display: block;
+        font-size: 20px;
+        opacity: 0.8;
+        position: absolute;
+        right: 10px;
+        text-align: center;
+        top: 12px;
+        width: 30px;
+        -webkit-transition: all .1s ease-in-out;
+        -moz-transition: all .1s ease-in-out;
+        -ms-transition: all .1s ease-in-out;
+        -o-transition: all .1s ease-in-out;
+        transition: all .1s ease-in-out;
+    }
+    .sf-menu {
+        width: 100%!important;
+        display: none;
+    }
+    .sf-menu.xactive {
+        display: block!important;
+    }
+    .sf-menu li {
+        display: block!important;
+        width: 100%!important;
+    }
+    .sf-menu li a {
+        float: none!important;
+    }
+    .sf-menu ul {
+        position:static!important;
+        display: none!important;
+        width: 100%
+    }
+    .xpopdrop ul {
+        display: block!important;
+    }
+
+    #main-menu ul li{
+        border-left: none;
+        border-right: none;
+    }
+
+    #main-menu ul li:hover{
+        border-left: none;
+        border-right: none;
+    }
+
+    #main-menu {
+        background: none repeat scroll 0 0 #F7F7F7;
+        float: right;
+        left: 0;
+        position: absolute;
+        text-align: center;
+        top: 68%;
+        width: 100%;
+    }
+
+
+    .search_bar input{
+        width: 88%;
+    }
+
+    #main-menu ul{
+        background: none repeat scroll 0 0 #F5F5F5;
+    }
+
+
+    .search {
+        left: 87%;
+        margin-top: -109px;
+        position: absolute;
+    }
+
+    .navbar-wrapper{
+
+    }
+
+}

@@ -1,0 +1,54 @@
+@font-face {
+    font-family: 'icomoon';
+    src:  url('/fonts/icomoon.eot?jss7rg');
+    src:  url('/fonts/icomoon.eot?jss7rg#iefix') format('embedded-opentype'),
+    url('/fonts/icomoon.ttf?jss7rg') format('truetype'),
+    url('/fonts/icomoon.woff?jss7rg') format('woff'),
+    url('/fonts/icomoon.svg?jss7rg#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    speak: never;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-ju-facebook:before {
+    content: "\e900";
+    color: #1877f2;
+}
+.icon-ju-instagram1:before {
+    content: "\e901";
+    color: #e4405f;
+}
+.icon-ju-messenger:before {
+    content: "\e902";
+    color: #00b2ff;
+}
+.icon-ju-skype:before {
+    content: "\e903";
+    color: #00aff0;
+}
+.icon-ju-whatsapp:before {
+    content: "\e904";
+    color: #25d366;
+}
+.icon-ju-youtube:before {
+    content: "\e905";
+    color: #f00;
+}
+.icon-ju-instagram:before {
+    content: "\1f322";
+}

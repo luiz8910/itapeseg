@@ -1,0 +1,236 @@
+#main-menu ul li:hover span{
+    color: #C02C31;
+}
+
+#main-menu ul li .nav-active span{
+    color: #C02C31;
+}
+
+#main-menu ul li .nav-active{
+    color: #000000;
+}
+
+.theme_color_text, .nav-active span{
+    color: #C02C31!important;
+}
+
+.member_designation p{
+    background: #C02C31;
+}
+
+.team_section:hover .team_content{
+    border: 2px solid #C02C31;
+}
+
+.team_section:hover .team_heading{
+    border-bottom: 2px solid #C02C31;
+}
+
+.dribbble_content a:hover{
+    color: #ffffff;
+    background: #C02C31;
+    border: 1px solid #C02C31;
+}
+
+.nav-active a{
+    color: #000000!important;
+}
+
+a:hover{
+    color: #C02C31;
+}
+
+.rd-button{
+    background: #C02C31;
+}
+
+.main_heading span{
+    color: #C02C31;
+}
+
+.filter_category ul li a:hover{
+    background: #C02C31;
+    color: #ffffff;
+}
+
+.filter_category ul li .active{
+    background: #C02C31;
+    color: #ffffff;
+}
+
+.subscribe_icon {
+    border: 2px solid #C02C31;
+    color: #C02C31;
+}
+
+.tabs .ui-tabs-active {
+    border-bottom-color: #C02C31;
+    border-left-color: #C02C31;
+    border-right: 2px solid #C02C31 !important;
+    border-top-color: #C02C31;
+}
+
+.inner-tab1{
+    border-top: 2px solid #C02C31;
+}
+
+.purchase:hover{
+    color: #C02C31;
+    border: 2px solid #C02C31;
+}
+
+.ui-accordion-header-active{
+    color: #C02C31!important;
+}
+
+.team_social_icon ul li a:hover {
+    border: 2px solid #C02C31;
+    color: #C02C31;
+}
+
+.prize h1, .service-2-icon{
+    color: #C02C31;
+}
+
+.service_icon {
+    color: #C02C31;
+}
+
+.service:hover .service_icon{
+    border: 12px solid #C02C31;
+    box-shadow: 0 -4px 0 0 #17aa8d;
+}
+
+.service:hover .service_content h1{
+    color: #C02C31;
+}
+.md .prize h1{
+    border: 5px solid #C02C31;
+    box-shadow: 0 -2px 4px 0 #17AA8D;
+}
+
+.md .pricing_table_content{
+    background: #C02C31;
+}
+
+.md .pricing_table_heading h1{
+    color: #ffffff;
+}
+
+.md .pricing_table_heading p{
+    color: #ffffff;
+}
+
+.testimonial_content p b{
+    color: #C02C31;
+}
+
+.blog:hover .blog_icon{
+    color: #C02C31;
+}
+
+.blog_next a:hover span, .blog:hover .blog_content p a ,.blog:hover .blog_content_icon, .blog:hover .blog_content h1{
+    color: #C02C31;
+}
+
+.follow_button:hover{
+    color: #C02C31!important;
+}
+
+.recent_tweets a, .quote_blog_content .blog_icon {
+    color: #C02C31;
+}
+
+.quote_blog_content{
+    border: 2px solid #C02C31;
+}
+
+.blog_content a{
+    color: #C02C31;
+}
+
+/*.get_social_content a {
+    background: none repeat scroll 0 0 #C02C31;
+}*/
+
+.update_icon {
+    background: none repeat scroll 0 0 #C02C31;
+}
+
+.copyright_text p a{
+    color: #C02C31;
+}
+
+
+.blog_style_2:hover .blog_style_2_content h1{
+    color: #C02C31;
+}
+
+.blog_style_2:hover .blog_style_2_icon{
+    color: #C02C31;
+}
+
+.blog_style_2:hover .blog_read_more{
+    background: #C02C31;
+    color: #ffffff;
+}
+
+.blog_style_2:hover{
+    border-color: #C02C31;
+    border-width: 2px;
+}
+
+.blog_style_2:hover .blog_style_2_icon_bg{
+    background: url("https://itapesegdistribuidora.com.br/images/blog-icon.png") no-repeat scroll center -72px rgba(0, 0, 0, 0);
+}
+
+.blog_style_2_quote a{
+    color: #C02C31;
+}
+
+.blog_next a:hover{
+    border: 2px solid #C02C31;
+}
+
+.blog2-link .icon{
+    color: #C02C31;
+}
+
+
+
+.third_accordion_content h1{
+    background: #1abc9c;
+}
+
+.fourth_accordion span {
+    color: #1ABC9C;
+}
+
+
+.fifth_accordion h3 {
+    background: url("https://itapesegdistribuidora.com.br/images/000_01.png") no-repeat scroll 97% center #C02C31;
+}
+
+.fifth_accordion .ui-state-active{
+    background: url("https://itapesegdistribuidora.com.br/images/00_02.png") no-repeat scroll 97% center #ffffff;
+}
+
+.fifth_accordion_default .ui-state-active {
+    background: url("https://itapesegdistribuidora.com.br/images/00_24.png") no-repeat scroll 97% center #C02C31;
+    color: #FFFFFF;
+}
+
+.fifth_accordion_default h3 {
+    background: url("https://itapesegdistribuidora.com.br/images/000_01.png") no-repeat scroll 97% center #343334;
+    text-transform: none;
+    margin-top: 10px!important;
+}
+
+.sixth_accordion .ui-state-active{
+    color: #1ABC9C;
+}
+
+
+.process_accordion{
+    background: #1ABC9C;
+}

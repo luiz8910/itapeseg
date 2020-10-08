@@ -1,0 +1,479 @@
+
+/*  New Addedd CSS code     End  END  *******************************************
+*/
+/* RESPONSIVE CSS
+-------------------------------------------------- */
+
+@media (max-width: 1700px) {
+
+
+
+}
+
+@media (max-width: 1366px) {
+
+    .portfolio-link {
+        top: 43%;
+    }
+
+
+}
+
+
+@media (max-width: 1200px) {
+
+
+
+    .purchase-now  {
+        text-align: center;
+
+    }
+
+    #content02{
+        width: 100%!important;
+    }
+
+    #content03{
+        width: 100%!important;
+    }
+
+    #main-menu ul li {
+        padding: 19px 25px;
+    }
+
+    .portfolio_item li{
+        width: 31%;
+    }
+
+    .portfolio_fullwidth_item .portfolio_item li {
+        width: 19.8%;
+    }
+
+
+    .portfolio_fullwidth_item .portfolio-link h1 {
+        color: #FFFFFF;
+        font-size: 14px;
+    }
+
+
+}
+
+@media (max-width: 1024px) {
+
+    .dribbble_content_image .blog2-link {
+        left: 32%;
+        top: 26%;
+    }
+
+}
+
+/* RESPONSIVE CSS
+-------------------------------------------------- */
+
+@media (max-width: 979px) {
+
+    .portfolio-link {
+        top: 45%;
+    }
+
+    .skill_set_item_skill{
+        right: 18%;
+    }
+
+
+
+    .ad-gallery .ad-image-wrapper {
+        height: 200px !important;
+    }
+
+    .subscribe{
+        margin: 0px;
+    }
+
+    .blog_style_2_comment p{
+        padding: 4px 3px;
+    }
+
+    .blog{
+        width: 100%!important;
+    }
+
+    .testimonial_content {
+        width: 90%;
+    }
+
+    .pricing_table_heading h1 {
+        font-size: 17px;
+    }
+
+    .pricing_table_heading p {
+        font-size: 13px;
+    }
+
+    .probo_box h2{
+        padding-left: 0px;
+        float: none;
+    }
+
+    .purchase{
+        display: inline-block;
+        margin-top: 20px;
+        position: static;
+        float: none;
+    }
+
+    .main_heading {
+        text-align: center;
+    }
+
+    .main_heading span {
+        display: inline-block;
+        float: none;
+        height: 46px;
+        position: relative;
+        width: 87px;
+    }
+
+    .main_heading h1{
+        float: none;
+    }
+
+    .main_heading p{
+        float: none;
+    }
+
+    .portfolio_item li{
+        width: 47%;
+    }
+
+    .portfolio_fullwidth_item .portfolio-link {
+        top: 37%;
+    }
+
+    .portfolio_fullwidth_item .portfolio_item li {
+        width: 33%;
+    }
+
+    .portfolio_fullwidth_item .portfolio-link h1 {
+        color: #FFFFFF;
+        font-size: 24px;
+    }
+
+
+    .dribbble_content_image .blog2-link {
+        left: 30%;
+        top: 20%;
+        background: none;
+    }
+
+    .progress-bar-bg{
+        width: 75%;
+    }
+
+}
+
+
+@media (max-width: 767px) {
+
+
+    .dribbble_content_image .blog2-link{
+
+    }
+
+    .md {
+        margin-top: 0px;
+    }
+
+    .portfolio_item li {
+        width: 45%;
+    }
+
+    .portfolio_fullwidth_item .portfolio_item li {
+        width: 49.8%;
+    }
+
+}
+
+
+/* RESPONSIVE CSS
+-------------------------------------------------- */
+@media (max-width: 686px) {
+
+    .dribbble_content_image .blog2-link{
+
+    }
+
+
+}
+/* RESPONSIVE CSS
+-------------------------------------------------- */
+@media (max-width: 650px) {
+
+    .dribbble_content_image .blog2-link{
+        left: 43%;
+        top: 47%;
+    }
+
+    .portfolio-link{
+
+    }
+
+}
+
+@media (max-width: 620px) {
+
+
+    .dribbble_content_image .blog2-link{
+
+    }
+
+}
+
+@media (max-width: 568px) {
+
+    .dribbble_content_image .blog2-link{
+
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    .dribbble_content_image .blog2-link {
+        top: 42%;
+    }
+
+    .ad-gallery .ad-image-wrapper {
+        height: 250px!important;
+    }
+
+
+    .portfolio_item li{
+        width: 95%;
+    }
+
+    .filter_category{
+        text-align: center;
+    }
+
+    .filter_category ul li{
+        float: none;
+        display: inline-block;
+    }
+
+    .filter_category ul li a {
+        font-size: 11px;
+        padding: 9px 15px;
+
+    }
+
+    .subscrib_input {
+        margin-right: 0px;
+    }
+
+    .clients_logo li {
+        float: none;
+        margin-right: 0;
+        width: 100%;
+    }
+
+    .skill_set_item_skill{
+        right: 15%;
+    }
+
+    .logo {
+        width: 44%;
+    }
+
+    .social_icon ul li {
+        padding: 0 14px;
+    }
+
+    .parallax_content h1{
+        font-size: 44px;
+    }
+
+    #main-menu{
+        padding-left: 0px!important;
+    }
+
+    .office_location_left{
+        width: 100%;
+    }
+
+    .office_location_right{
+        width: 100%;
+        margin-bottom: 25px;
+    }
+
+    .testimonial_section ul {
+        padding-bottom: 145px;
+    }
+
+    .ui-tabs .ui-tabs-nav li.ui-tabs-active {
+        margin-bottom: -3px!important;
+        padding-bottom: 3px!important;
+    }
+
+    .progress-bar-bg {
+        width: 78%;
+    }
+
+    .portfolio_fullwidth_item .portfolio-link {
+        top: 47%;
+    }
+
+    .portfolio_fullwidth_item .portfolio_item li {
+        width: 100%;
+    }
+
+    .screen_video_frame iframe{
+        height: 199px;
+    }
+
+    .service_section_content{
+        padding: 30px 30px 30px 30px;
+    }
+
+    .service_image {
+        float: none;
+        margin-right: 0;
+        text-align: center;
+        width: 100%;
+    }
+
+}
+
+
+@media (max-width: 382px) {
+
+    .dribbble_content_image .blog2-link {
+        left: 37%;
+        top: 29%;
+    }
+
+    .default_carousel {
+        left: 42% !important;
+    }
+
+    .screen_video_frame iframe{
+        height: 165px;
+    }
+
+    .portfolio-link {
+
+    }
+
+    .ad-gallery .ad-image-wrapper {
+        height: 170px!important;
+    }
+
+    .subscribe input{
+        width: 80%;
+    }
+
+    .filter_category ul li a {
+
+    }
+
+    .ui-tabs .ui-tabs-nav li a {
+        padding: 0.5em 1em!important;
+    }
+
+    .update_input{
+        width: 50%;
+    }
+
+    .bar-outer{
+        margin-left: 0px;
+        width: 97%;
+    }
+
+    .skill_set_item_skill {
+        right: 21%;
+    }
+
+    .blog_style_2_comment a{
+        padding: 4px 5px;
+    }
+
+    .about_showcase_left{
+        width: 100%;
+    }
+
+
+    .social_icon ul li {
+        padding: 0 4px;
+    }
+
+    .tab_image {
+        float: none;
+        margin: 0 0 20px;
+        width: 100%;
+    }
+
+    .tab_image img{
+        width: 100%;
+    }
+
+    .tab_content{
+        width: 100%;
+    }
+
+
+    .testimonial_content h2 {
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    .ui-tabs .ui-tabs-nav li.ui-tabs-active {
+        margin-bottom: -2px!important;
+        padding-bottom: 2px!important;
+    }
+
+    .main_heading h1{
+        font-size: 38px;
+    }
+
+    .contactform input {
+        width: 92%;
+    }
+
+    .contactform textarea{
+        width: 92%;
+    }
+
+    .service {
+        display: block;
+        width: 100%;
+    }
+
+    .service_section_content{
+        padding: 20px!important;
+    }
+
+    .service_wrapper {
+        background: none;
+    }
+
+    .progress-bar-bg {
+        width: 66%;
+    }
+
+    .blog2-link{
+        left: 35%;
+        top: 23%;
+    }
+
+    .portfolio_fullwidth_item .portfolio-link {
+        top: 42%;
+    }
+
+
+}
+
+@media (max-width: 322px) {
+
+
+
+}
