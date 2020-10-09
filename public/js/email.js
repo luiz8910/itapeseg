@@ -4,6 +4,17 @@ $(function (){
         if(e.which === 13 && $("#email").is(':focus'))
             forgot_password();
     });
+
+    $("#password").keyup(function (){
+        if(location.pathname.search('nova_senha') != -1)
+            verify_password();
+    });
+
+    $("#password_confirm").keyup(function (){
+        if(location.pathname.search('nova_senha') != -1)
+            verify_password();
+    });
+
 });
 
 function forgot_password()
@@ -17,7 +28,7 @@ function forgot_password()
 
         if(validateEmail(email))
         {
-            $(".progress-bar").css('display', 'block');//.addClass('progress-bar-animated');
+            $(".progress-bar").css('display', 'block');
             $(".progress").css('display', 'block');
             $("#forgot_password").css('display', 'none');
 
@@ -27,17 +38,23 @@ function forgot_password()
                 dataType: 'json',
                 success: function (e){
 
-                    $("#email").val('');
-                    sweet_alert_success('Um email com instruções foi enviado para ' + email);
+                    if(e.status)
+                        sweet_alert_success('Um email com instruções foi enviado para ' + email);
+
+                    else
+                        sweet_alert_error(e.msg);
+
 
                 },
                 fail: function (e){
                     sweet_alert_error();
                     console.log('fail', e);
                 }
+
             }).always(function (){
+                $("#email").val('');
                 $(".progress").css('display', 'none');
-                $(".progress-bar").css('display', 'none');//.removeClass('progress-bar-animated');
+                $(".progress-bar").css('display', 'none');
                 $("#forgot_password").css('display', 'inline-block');
             });
 
@@ -48,7 +65,62 @@ function forgot_password()
     }
 }
 
-function new_password()
+function verify_password()
 {
+    if($("#password").val() !== $("#password_confirm").val())
+    {
+        $("#password")
+            .addClass('has-error')
+            .removeClass('has-success');
 
+        $("#password_confirm")
+            .addClass('has-error')
+            .removeClass('has-success');
+
+        $("#password_span")
+            .css('display', 'block')
+            .css('color', 'red')
+            .text('As senhas não são iguais');
+
+        $("#btn_submit").attr('disabled', true);
+    }
+    else{
+
+        if($("#password").val().length >= 8)
+        {
+            $("#password")
+                .removeClass('has-error')
+                .addClass('has-success');
+
+            $("#password_confirm")
+                .removeClass('has-error')
+                .addClass('has-success');
+
+            $("#password_span")
+                .css('display', 'block')
+                .css('color', 'green')
+                .text('As senhas são iguais')
+
+
+            $("#btn_submit").attr('disabled', null);
+        }
+        else{
+            $("#password")
+                .addClass('has-error')
+                .removeClass('has-success');
+
+            $("#password_confirm")
+                .addClass('has-error')
+                .removeClass('has-success');
+
+            $("#password_span")
+                .css('display', 'block')
+                .css('color', 'red')
+                .text('A sua nova senha deve ter pelo menos 8 caracteres');
+
+            $("#btn_submit").attr('disabled', true);
+
+        }
+
+    }
 }

@@ -12,6 +12,7 @@
     <link rel="stylesheet" type="text/css"
           href="../../assets/lib/material-design-icons/css/material-design-iconic-font.min.css"/>
     <link rel="stylesheet" href="../../assets/css/style.css" type="text/css"/>
+    <link rel="stylesheet" href="../../css/common.css" type="text/css"/>
 </head>
 <body class="be-splash-screen">
 <div class="be-wrapper be-login">
@@ -21,21 +22,26 @@
                 <div class="panel panel-default panel-border-color panel-border-color-primary">
                     <div class="panel-heading">
                         <img src="http://itapesegdistribuidora.com.br/images/logo.png" alt="logo" width="110" height="42" class="logo-img">
-                        <span class="splash-description">Redefina sua senha?</span>
+                        <span class="splash-description">Redefina sua senha</span>
                     </div>
-                    <div class="panel-body">
-                        <p>Digite sua nova senha nos campos abaixo</p>
-                        <div class="form-group xs-pt-20">
-                            <input type="password" name="password" required placeholder="Sua nova senha" autocomplete="off" class="form-control" id="password">
+                    <form action="{{ route('new.password', ['token' => $token]) }}" method="POST">
+
+                        <div class="panel-body">
+                            <p class="text-center">Digite sua nova senha nos campos abaixo</p>
+                            <div class="form-group xs-pt-20">
+                                <input type="password" name="password" required placeholder="Sua nova senha" autocomplete="off" class="form-control" id="password" minlength="8">
+                            </div>
+                            <div class="form-group xs-pt-20">
+                                <input type="password" required placeholder="Confirme sua senha" autocomplete="off" class="form-control" id="password_confirm">
+                            </div>
+                            <p class="text-center" id="password_span" style="display:none; color: red;">Os campos de senha não são iguais.</p>
+                            <p class="xs-pt-5 xs-pb-20 text-center"><a href="{{ url('/login') }}">Voltar para login</a></p>
+                            <div class="form-group xs-pt-5">
+                                <button type="submit" id="btn_submit" class="btn btn-block btn-primary btn-xl" disabled>Recuperar senha</button>
+                            </div>
+
                         </div>
-                        <div class="form-group xs-pt-20">
-                            <input type="password" required placeholder="Confirme sua senha" autocomplete="off" class="form-control" id="password_confirm">
-                        </div>
-                        <p class="xs-pt-5 xs-pb-20 text-center"><a href="{{ url('/login') }}">Voltar para login</a></p>
-                        <div class="form-group xs-pt-5">
-                            <button type="submit" class="btn btn-block btn-primary btn-xl" onclick="new_password();">Recuperar senha</button>
-                        </div>
-                    </div>
+                    </form>
                 </div>
 
             </div>

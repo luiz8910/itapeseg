@@ -138,7 +138,7 @@
             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
                 <tr>
                     <td align="left" bgcolor="#ffffff" style="padding: 36px 24px 0; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; border-top: 3px solid #d4dadf;">
-                        <h1 style="margin: 0; font-size: 32px; font-weight: 700; letter-spacing: -1px; line-height: 48px;">Recupere sua senha</h1>
+                        <h1 style="margin: 0; font-size: 32px; font-weight: 700; letter-spacing: -1px; line-height: 48px;">Sua senha foi alterada</h1>
                     </td>
                 </tr>
             </table>
@@ -156,13 +156,13 @@
                 <!-- start copy -->
                 <tr>
                     <td align="left" bgcolor="#ffffff" style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-                        <p style="margin: 0;">Clique no botão abaixo para redefinir sua senha. Se você não requisitou uma nova senha, você pode excluir este email.</p>
+                        <p style="margin: 0;">Atenção. Sua senha acaba de ser alterada, se você acredita que isso foi um engano, entre em contato com o responsável imediatamente.</p>
                     </td>
                 </tr>
                 <!-- end copy -->
 
                 <!-- start button -->
-                <tr>
+                {{--<tr>
                     <td align="left" bgcolor="#ffffff">
                         <table border="0" cellpadding="0" cellspacing="0" width="100%">
                             <tr>
@@ -189,7 +189,7 @@
                         <p style="margin: 0;">Se o botão não funcionar, copie e cole o link abaixo no seu navegador</p>
                         <p style="margin: 0;"><a href="#" target="_blank">http://localhost:8000/nova_senha/{{ $token }}</a></p>
                     </td>
-                </tr>
+                </tr>--}}
                 <!-- end copy -->
 
                 <!-- start copy -->
@@ -221,13 +221,13 @@
                 <!-- end permission -->
 
                 <!-- start unsubscribe -->
-                {{--<tr>
-                    <td align="center" bgcolor="#e9ecef" style="padding: 12px 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 20px; color: #666;">
-                        <p style="margin: 0;">To stop receiving these emails, you can <a href="https://sendgrid.com" target="_blank">unsubscribe</a> at any time.</p>
-                        <p style="margin: 0;">Paste 1234 S. Broadway St. City, State 12345</p>
-                    </td>
-                </tr>--}}
-                <!-- end unsubscribe -->
+            {{--<tr>
+                <td align="center" bgcolor="#e9ecef" style="padding: 12px 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 20px; color: #666;">
+                    <p style="margin: 0;">To stop receiving these emails, you can <a href="https://sendgrid.com" target="_blank">unsubscribe</a> at any time.</p>
+                    <p style="margin: 0;">Paste 1234 S. Broadway St. City, State 12345</p>
+                </td>
+            </tr>--}}
+            <!-- end unsubscribe -->
 
             </table>
 
