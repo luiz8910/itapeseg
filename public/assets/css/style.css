@@ -1,6 +1,6 @@
 /*!
  * beagle v1.1.1 (http://foxythemes.net/themes/beagle)
- * Copyright 2014-2016 Foxy Themes all rights reserved 
+ * Copyright 2014-2016 Foxy Themes all rights reserved
  */
 
 /*------------------------------------------------------------------
@@ -7477,9 +7477,9 @@ button.close {
   }
 }
 /* General styles for the modal */
-/* 
+/*
 Styles for the html/body for special modal where we want 3d effects
-Note that we need a container wrapping all content on the page for the 
+Note that we need a container wrapping all content on the page for the
 perspective effects (not including the modals and the overlay).
 */
 .modal-perspective,
@@ -8248,7 +8248,7 @@ canvas {
   line-height: 60px;
   height: 60px;
   width: 230px;
-  background-image: url("../img/logo.png");
+  background-image: url("http://itapesegdistribuidora.com.br/images/logo.png");
   background-repeat: no-repeat;
   background-position: 20px center;
   padding: 0 20px;
@@ -8256,7 +8256,7 @@ canvas {
 }
 @media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 2/1), (min-resolution: 192dpi) {
   .be-top-header .navbar-header .navbar-brand {
-    background-image: url("../img/logo-xx.png");
+    background-image: url("http://itapesegdistribuidora.com.br/images/logo.png");
     background-size: 102px 27px;
   }
 }
@@ -8503,11 +8503,11 @@ canvas {
   background-color: #4285f4;
 }
 .be-color-header .be-top-header .navbar-header .navbar-brand {
-  background-image: url("../img/logo-white.png");
+  background-image: url("http://itapesegdistribuidora.com.br/images/logo.png");
 }
 @media (-webkit-min-device-pixel-ratio: 2), (-o-min-device-pixel-ratio: 2/1), (min-resolution: 192dpi) {
   .be-color-header .be-top-header .navbar-header .navbar-brand {
-    background-image: url("../img/logo-white-xx.png");
+    background-image: url("http://itapesegdistribuidora.com.br/images/logo.png");
   }
 }
 .be-color-header .be-top-header .page-title {
@@ -11570,7 +11570,7 @@ li.L9 {
 .invoice-logo {
   height: 54px;
   min-width: 204px;
-  background-image: url("../img/logo-xx.png");
+  background-image: url("http://itapesegdistribuidora.com.br/images/logo.png");
   background-repeat: no-repeat;
   background-position: 0 ;
 }
@@ -11578,7 +11578,7 @@ li.L9 {
   .invoice-logo {
     height: 27px;
     width: 102px;
-    background-image: url("../img/logo.png");
+    background-image: url("http://itapesegdistribuidora.com.br/images/logo.png");
   }
 }
 @media (max-width: 480px) {
