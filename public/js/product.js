@@ -1,5 +1,7 @@
 $(function (){
 
+    $("input[type='radio']").attr('disabled', false);
+
 
     $("#form").submit(function (e){
         if($(".radio").is(':checked').length == 0)
@@ -46,13 +48,13 @@ $(function (){
 
         location.href = "/produtos/"+$(this).val();
     });
+
+    $("#category_select_sub").change(function (){
+
+        location.href = "/subcategorias_produtos/"+$(this).val();
+    });
 });
 
-//Add or update product
-function add_update($id)
-{
-    //If $id == true its update function, if not is add
-}
 
 function destroy($id)
 {
@@ -95,13 +97,53 @@ function activate($id)
     sweet_alert(data, ajax);
 }
 
+function activate_category($id)
+{
+    var data = {
+        title: 'Atenção',
+        text: 'Você deseja reativar esta categoria?',
+        button: 'Reativar',
+        success_msg: 'A categoria foi reativada com sucesso',
+        reload: false,
+        id: $id
+    }
+
+    var ajax = {
+        url: '/activate_category/' + $id,
+        method: 'GET',
+        dataType: 'json'
+    };
+
+    sweet_alert(data, ajax);
+}
+
+function activate_category_sub($id)
+{
+    var data = {
+        title: 'Atenção',
+        text: 'Você deseja reativar esta subcategoria?',
+        button: 'Reativar',
+        success_msg: 'A subcategoria foi reativada com sucesso',
+        reload: false,
+        id: $id
+    }
+
+    var ajax = {
+        url: '/activate_subcategory/' + $id,
+        method: 'GET',
+        dataType: 'json'
+    };
+
+    sweet_alert(data, ajax);
+}
+
 function destroy_category($id)
 {
     var data = {
         title: 'Atenção',
         text: 'Você deseja excluir esta categoria?',
         button: 'Excluir',
-        success_msg: 'A categoria foi excluído com sucesso',
+        success_msg: 'A categoria foi excluída com sucesso',
         reload: false,
         id: $id
     };
@@ -109,6 +151,27 @@ function destroy_category($id)
 
     var ajax = {
         url: '/categoria/' + $id,
+        method: 'DELETE',
+        dataType: 'json'
+    };
+
+    sweet_alert(data, ajax);
+}
+
+function destroy_category_sub($id)
+{
+    var data = {
+        title: 'Atenção',
+        text: 'Você deseja excluir esta subcategoria?',
+        button: 'Excluir',
+        success_msg: 'A subcategoria foi excluída com sucesso',
+        reload: false,
+        id: $id
+    };
+
+
+    var ajax = {
+        url: '/subcategoria/' + $id,
         method: 'DELETE',
         dataType: 'json'
     };

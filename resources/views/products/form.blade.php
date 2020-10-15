@@ -34,13 +34,13 @@
                                     @foreach($categories as $category)
                                         @if($category->status)
                                             <div class="be-radio inline">
-                                                <input type="radio" class="radio" id="rad_{{ $category->id }}"
+                                                <input type="radio" disabled class="radio" id="rad_{{ $category->id }}"
                                                        @if($edit && $category->id == $product->category_id) checked @endif>
                                                 <label for="rad_{{ $category->id }}">{{ $category->name }}</label>
                                             </div>
                                         @else
                                             <div class="be-radio inline">
-                                                <input type="radio" class="radio" id="rad_{{ $category->id }}" disabled>
+                                                <input type="radio" disabled class="radio" id="rad_{{ $category->id }}" disabled>
                                                 <label for="rad_{{ $category->id }}">{{ $category->name }}</label>
                                             </div>
                                         @endif

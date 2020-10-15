@@ -78,7 +78,7 @@
                             <li class="divider">Catalago</li>
                             <li class="active"><a href="{{ route('home') }}"><i class="icon mdi mdi-home"></i><span>Dashboard</span></a>
                             </li>
-                            <li class="parent"><a href="#"><i class="icon mdi mdi-labels"></i><span>Produtos</span></a>
+                            <li class="parent"><a href="javascript:"><i class="icon mdi mdi-labels"></i><span>Produtos</span></a>
                                 <ul class="sub-menu">
                                     <li>
                                         <a href="{{ route('product.index') }}">Listar</a>
@@ -89,21 +89,23 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li class="parent"><a href="charts.html"><i class="icon mdi mdi-case"></i><span>Categoria</span></a>
+                            <li class="parent"><a href="javascript:"><i class="icon mdi mdi-case"></i><span>Categoria</span></a>
                                 <ul class="sub-menu">
                                     <li><a href="{{ route('product.index.category') }}">Listar</a>
                                     </li>
                                     <li><a href="{{ route('product.create.category') }}">Adicionar Novo</a>
                                     </li>
+                                    <li><a href="{{ route('product.deleted.category') }}">Excluídos</a>
+                                    </li>
                                 </ul>
                             </li>
-                            <li class="parent"><a href="#"><i class="icon mdi mdi-case-download"></i><span>Subcategoria</span></a>
+                            <li class="parent"><a href="javascript:"><i class="icon mdi mdi-case-download"></i><span>Subcategoria</span></a>
                                 <ul class="sub-menu">
-                                    <li><a href="li.html">Listar</a>
+                                    <li><a href="{{ route('product.index.category.sub') }}">Listar</a>
                                     </li>
-                                    <li><a href="cadastrar-subcategoria.html">Adicionar</a>
+                                    <li><a href="{{ route('product.create.category.sub') }}">Adicionar</a>
                                     </li>
-                                    <li><a href="s.html">Status</a>
+                                    <li><a href="{{ route('product.deleted.category.sub') }}">Excluídos</a>
                                     </li>
                                 </ul>
                             </li>

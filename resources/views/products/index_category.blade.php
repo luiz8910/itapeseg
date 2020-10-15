@@ -17,7 +17,7 @@
                             </thead>
                             <tbody>
                             @foreach($categories as $category)
-                                <tr>
+                                <tr id="model_{{ $category->id }}">
                                     <td class="user-avatar">{{ ucfirst($category->name) }}</td>
                                     <td>
                                         @if($category->status)

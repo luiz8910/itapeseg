@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Repositories\ProductCategoryRepository;
 use App\Repositories\ProductRepository;
+use App\Repositories\SubCategoryRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -17,11 +18,16 @@ class ProductController extends Controller
      * @var ProductCategoryRepository
      */
     private $categories;
+    /**
+     * @var SubCategoryRepository
+     */
+    private $subCategory;
 
-    public function __construct(ProductRepository $repository, ProductCategoryRepository $categories)
+    public function __construct(ProductRepository $repository, ProductCategoryRepository $categories, SubCategoryRepository $subCategory)
     {
         $this->repository = $repository;
         $this->categories = $categories;
+        $this->subCategory = $subCategory;
     }
 
     public function index($category_id = null)
@@ -289,12 +295,12 @@ class ProductController extends Controller
     {
         $data = $request->all();
 
-        if(isset($data['status']))
+        if(isset($data['active']))
             $data['status'] = 1;
         else
             $data['status'] = 0;
 
-       // $data['name'] = strtolower($data['name']);
+        $data['active'] = 1;
 
         if($this->categories->findByField('name', $data['name'])->first())
         {
@@ -329,13 +335,12 @@ class ProductController extends Controller
     {
         $data = $request->all();
 
-        if(isset($data['status']))
+        if(isset($data['active']))
             $data['status'] = 1;
         else
             $data['status'] = 0;
 
-
-        //$data['name'] = strtolower($data['name']);
+        $data['active'] = 1;
 
         if(!$this->categories->findByField('id', $id)->first())
         {
@@ -374,7 +379,6 @@ class ProductController extends Controller
             return redirect()->back();
         }
 
-
     }
 
     public function delete_category($id)
@@ -404,6 +408,260 @@ class ProductController extends Controller
             return json_encode(['status' => false, 'msg' => 'Um erro ocorreu, tente novamente mais tarde']);
         }
 
+    }
+
+    public function deleted_categories()
+    {
+        $scripts[] = '../../js/product.js';
+
+        $route = 'products.index.category';
+
+        $categories = $this->categories->findByField('active', 0);
+
+        $deleted = true;
+
+        return view('index', compact('route', 'scripts', 'categories', 'deleted'));
+    }
+
+    public function activate_category($id)
+    {
+        $category = $this->categories->findByField('id', $id)->first();
+
+        DB::beginTransaction();
+
+        try {
+            if($sub)
+            {
+                $p['active'] = 1;
+
+                $this->categories->update($p, $id);
+
+                return json_encode(['status' => true]);
+            }
+            else
+                return json_encode(['status' => false, 'msg' => 'Esta categoria não foi encontrada', 'code' => 404]);
+
+        }catch (\Exception $e)
+        {
+            DB::rollBack();
+
+            return json_encode(['status' => false, 'msg' => 'Houve um erro ao ativar esta categoria, tente novamente mais tarde']);
+        }
+    }
+
+    public function categories_sub($category_id = null)
+    {
+        $sub = $category_id ?
+            $this->subCategory->findWhere(['active' => 1, 'category_id' => $category_id]) :
+            $this->subCategory->findByField('active', 1);
+
+        $route = 'products.index_category_sub';
+
+        $scripts[] = '../../js/product.js';
+
+        $categories = $this->categories->findByField('active', 1);
+
+        foreach ($sub as $s)
+            $s->category_name = $this->categories->findByField('id', $s->category_id)->first()->name;
+
+        return view('index', compact('route', 'scripts', 'sub', 'categories'));
+    }
+
+    public function create_category_sub()
+    {
+        $edit = false;
+
+        $scripts[] = '../../js/product.js';
+
+        $route = 'products.form_category_sub';
+
+        $categories = $this->categories->findByField('active', 1);
+
+        return view('index', compact('route', 'scripts', 'edit', 'categories'));
+    }
+
+    public function edit_category_sub($id)
+    {
+        $edit = true;
+
+        $scripts[] = '../../js/product.js';
+
+        $sub = $this->subCategory->findByField('id', $id)->first();
+
+        $route = 'products.form_category_sub';
+
+        $categories = $this->categories->findByField('active', 1);
+
+        if($sub)
+            return view('index', compact('route', 'scripts', 'sub', 'edit', 'categories'));
+
+        return abort(404);
+    }
+
+    public function store_category_sub(Request $request)
+    {
+        $data = $request->all();
+
+        if(isset($data['active']))
+            $data['status'] = 1;
+        else
+            $data['status'] = 0;
+
+        $data['active'] = 1;
+
+        if($this->subCategory->findByField('name', $data['name'])->first())
+        {
+            $request->session()->flash('error.msg', "Esta subcategoria já existe");
+
+            return redirect()->back();
+        }
+
+        DB::beginTransaction();
+
+        try {
+
+            $this->subCategory->create($data);
+
+            DB::commit();
+
+            $request->session()->flash('success.msg', 'A subcategoria foi criada com sucesso');
+
+        }catch (\Exception $e)
+        {
+            DB::rollBack();
+
+            $request->session()->flash('error.msg', 'Houve um erro ao gravar esta subcategoria, tente novamente mais tarde');
+
+            dd($e);
+        }
+
+        return redirect()->back();
+    }
+
+    public function update_category_sub(Request $request, $id)
+    {
+        $data = $request->all();
+
+        if(isset($data['active']))
+            $data['status'] = 1;
+        else
+            $data['status'] = 0;
+
+
+        $data['active'] = 1;
+
+        if(!$this->subCategory->findByField('id', $id)->first())
+        {
+            $request->session()->flash('error.msg', "Esta subcategoria não existe");
+
+            return redirect()->back();
+        }
+
+        if($this->subCategory->findWhere(['name' => $data['name'], ['id', '<>', $id]])->first())
+        {
+            $request->session()->flash('error.msg', "Esta subcategoria já esta cadastrada");
+
+            return redirect()->back();
+        }
+
+        DB::beginTransaction();
+
+        try {
+
+            $this->subCategory->update($data, $id);
+
+            DB::commit();
+
+            $request->session()->flash('success.msg', 'A subcategoria foi alterada com sucesso');
+
+            return redirect()->route('product.index.category.sub');
+
+        }catch (\Exception $e)
+        {
+            DB::rollBack();
+
+            $request->session()->flash('error.msg', 'Houve um erro ao alterar esta subcategoria, tente novamente mais tarde');
+
+            dd($e);
+
+            return redirect()->back();
+        }
+
+
+    }
+
+    public function delete_category_sub($id)
+    {
+        $category = $this->subCategory->findByField('id', $id)->first();
+
+        DB::beginTransaction();
+
+        try {
+            if($category)
+            {
+                $c['active'] = 0;
+
+                $this->subCategory->update($c, $id);
+
+                DB::commit();
+
+                return json_encode(['status' => true]);
+            }
+            else
+                return json_encode(['status' => false, 'msg' => 'Esta subcategoria não foi encontrada', 'code' => 404]);
+
+        }catch (\Exception $e)
+        {
+            DB::rollBack();
+
+            return json_encode(['status' => false, 'msg' => 'Um erro ocorreu, tente novamente mais tarde']);
+        }
+
+    }
+
+    public function deleted_categories_sub()
+    {
+        $scripts[] = '../../js/product.js';
+
+        $route = 'products.index_category_sub';
+
+        $sub = $this->subCategory->findByField('active', 0);
+
+        foreach($sub as $s)
+            $s->category_name = $this->categories->findByField('id', $s->category_id)->first()->name;
+
+        $deleted = true;
+
+        $categories = $this->categories->findByField('active', 1);
+
+        return view('index', compact('route', 'scripts', 'sub', 'deleted', 'categories'));
+    }
+
+    public function activate_category_sub($id)
+    {
+        $sub = $this->subCategory->findByField('id', $id)->first();
+
+        DB::beginTransaction();
+
+        try {
+            if($sub)
+            {
+                $p['active'] = 1;
+
+                $this->subCategory->update($p, $id);
+
+                return json_encode(['status' => true]);
+            }
+            else
+                return json_encode(['status' => false, 'msg' => 'Esta subcategoria não foi encontrada', 'code' => 404]);
+
+        }catch (\Exception $e)
+        {
+            DB::rollBack();
+
+            dd($e);
+            return json_encode(['status' => false, 'msg' => 'Houve um erro ao ativar esta subcategoria, tente novamente mais tarde']);
+        }
     }
 }
 

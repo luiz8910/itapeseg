@@ -74,4 +74,28 @@ Route::group(['middleware' => 'auth'], function (){
 
     Route::delete('/categoria/{id}', 'ProductController@delete_category')->name('product.delete.category');
 
+    Route::get('/categorias_excluidas', 'ProductController@deleted_categories')->name('product.deleted.category');
+
+    Route::get('/activate_category/{id}', 'ProductController@activate_category');
+
+//----------------------------------------------------------------------------------------------------------------------
+
+    //Subcategoria de Produtos
+
+    Route::get('/subcategorias_produtos/{category_id?}', 'ProductController@categories_sub')->name('product.index.category.sub');
+
+    Route::get('/criar_subcategoria', 'ProductController@create_category_sub')->name('product.create.category.sub');
+
+    Route::get('/editar_subcategoria/{id}', 'ProductController@edit_category_sub')->name('product.edit.category.sub');
+
+    Route::post('/subcategoria', 'ProductController@store_category_sub')->name('product.store.category.sub');
+
+    Route::put('/subcategoria/{id}', 'ProductController@update_category_sub')->name('product.update.category.sub');
+
+    Route::delete('/subcategoria/{id}', 'ProductController@delete_category_sub')->name('product.delete.category.sub');
+
+    Route::get('/subcategorias_excluidas', 'ProductController@deleted_categories_sub')->name('product.deleted.category.sub');
+
+    Route::get('/activate_subcategory/{id}', 'ProductController@activate_category_sub');
+
 });
