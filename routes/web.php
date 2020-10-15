@@ -42,7 +42,7 @@ Route::group(['middleware' => 'auth'], function (){
 
     //Produtos
 
-    Route::get('/produtos', 'ProductController@index')->name('product.index');
+    Route::get('/produtos/{category_id?}', 'ProductController@index')->name('product.index');
 
     Route::get('/criar_produto', 'ProductController@create')->name('product.create');
 
@@ -53,6 +53,10 @@ Route::group(['middleware' => 'auth'], function (){
     Route::put('/produto/{id}', 'ProductController@update')->name('product.update');
 
     Route::delete('/produto/{id}', 'ProductController@delete')->name('product.delete');
+
+    Route::get('/produtos_excluidos', 'ProductController@deleted')->name('product.deleted');
+
+    Route::get('/activate/{id}', 'ProductController@activate');
 
 //----------------------------------------------------------------------------------------------------------------------
 

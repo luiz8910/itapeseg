@@ -24,15 +24,26 @@ class ProductController extends Controller
         $this->categories = $categories;
     }
 
-    public function index()
+    public function index($category_id = null)
     {
         $scripts[] = '../../js/product.js';
 
         $route = 'products.index';
 
-        $products = $this->repository->findByField('active', 1);
+        $products = $category_id && $category_id > 0 ?
+            $this->repository->findWhere(['active' => 1, 'category_id' => $category_id]) :
+            $this->repository->findByField('active', 1);
 
         $categories = $this->categories->findByField('active', 1);
+
+        foreach ($products as $product)
+        {
+            if($product->category_id)
+                $product->category_name = $this->categories->findByField('id', $product->category_id)->first()->name;
+            else
+                $product->category_name = "Sem categoria";
+        }
+
 
         return view('index', compact('route', 'scripts', 'products', 'categories'));
     }
@@ -64,8 +75,10 @@ class ProductController extends Controller
 
         $product = $this->repository->findByField('id', $id)->first();
 
+        $categories = $this->categories->findByField('active', 1);
+
         if($product)
-            return view('index', compact('route', 'edit', 'scripts'));
+            return view('index', compact('route', 'edit', 'scripts', 'product', 'categories'));
 
         return abort(404);
     }
@@ -75,10 +88,11 @@ class ProductController extends Controller
         $data = $request->all();
 
         if(isset($data['active']))
-            $data['active'] = 1;
+            $data['status'] = 1;
         else
-            $data['active'] = 0;
+            $data['status'] = 0;
 
+        $data['active'] = 1;
         //$data['name'] = strtolower($data['name']);
 
         if($this->repository->findByField('name', $data['name'])->first())
@@ -87,7 +101,6 @@ class ProductController extends Controller
 
             return redirect()->back();
         }
-
 
         DB::beginTransaction();
 
@@ -115,9 +128,11 @@ class ProductController extends Controller
         $data = $request->all();
 
         if(isset($data['active']))
-            $data['active'] = 1;
+            $data['status'] = 1;
         else
-            $data['active'] = 0;
+            $data['status'] = 0;
+
+        $data['active'] = 1;
 
         //$data['name'] = strtolower($data['name']);
 
@@ -209,9 +224,32 @@ class ProductController extends Controller
         }
     }
 
+    public function deleted()
+    {
+        $scripts[] = '../../js/product.js';
+
+        $route = 'products.index';
+
+        $products = $this->repository->findByField('active', 0);
+
+        $categories = $this->categories->findByField('active', 1);
+
+        foreach ($products as $product)
+        {
+            if($product->category_id)
+                $product->category_name = $this->categories->findByField('id', $product->category_id)->first()->name;
+            else
+                $product->category_name = "Sem categoria";
+        }
+
+        $deleted = true;
+
+        return view('index', compact('route', 'scripts', 'products', 'categories', 'deleted'));
+    }
+
     public function categories()
     {
-        $categories = $this->categories->all();
+        $categories = $this->categories->findByField('active', 1);
 
         $route = 'products.index_category';
 
@@ -251,10 +289,10 @@ class ProductController extends Controller
     {
         $data = $request->all();
 
-        if(isset($data['active']))
-            $data['active'] = 1;
+        if(isset($data['status']))
+            $data['status'] = 1;
         else
-            $data['active'] = 0;
+            $data['status'] = 0;
 
        // $data['name'] = strtolower($data['name']);
 
@@ -291,10 +329,11 @@ class ProductController extends Controller
     {
         $data = $request->all();
 
-        if(isset($data['active']))
-            $data['active'] = 1;
+        if(isset($data['status']))
+            $data['status'] = 1;
         else
-            $data['active'] = 0;
+            $data['status'] = 0;
+
 
         //$data['name'] = strtolower($data['name']);
 

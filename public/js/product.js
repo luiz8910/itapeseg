@@ -11,12 +11,40 @@ $(function (){
     });
 
     $(".radio_active").click(function (){
-        if($(this).is(":checked"))
-        {
 
+        var id = $(this)[0].id;
+
+        if(id == "rad_inactive")
+            $("#rad_active").prop('checked', false);
+
+        else
+            $("#rad_inactive").prop('checked', false);
+
+
+    });
+
+    $(".radio").click(function (){
+
+        var id = this.id.replace('rad_', '');
+
+        $("#category_id").val(id);
+
+        for (var i = 0; i < $(".radio").length; i++)
+        {
+            var _id = $(".radio")[i].id;
+
+            $("#"+_id).prop('checked', false);
         }
 
-        console.log($(".radio_active"));
+        $("#rad_"+id).prop('checked', true);
+
+        console.log($("#category_id").val());
+    });
+
+
+    $("#category_select").change(function (){
+
+        location.href = "/produtos/"+$(this).val();
     });
 });
 
@@ -41,6 +69,26 @@ function destroy($id)
     var ajax = {
         url: '/produto/' + $id,
         method: 'DELETE',
+        dataType: 'json'
+    };
+
+    sweet_alert(data, ajax);
+}
+
+function activate($id)
+{
+    var data = {
+        title: 'Atenção',
+        text: 'Você deseja reativar este produto?',
+        button: 'Reativar',
+        success_msg: 'O produto foi reativado com sucesso',
+        reload: false,
+        id: $id
+    }
+
+    var ajax = {
+        url: '/activate/' + $id,
+        method: 'GET',
         dataType: 'json'
     };
 

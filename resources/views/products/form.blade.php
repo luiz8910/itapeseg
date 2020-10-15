@@ -32,10 +32,19 @@
                                 <div class="col-sm-7">
                                     <input type="hidden" name="category_id" id="category_id" value="@if($edit){{ $product->category_id }}@endif">
                                     @foreach($categories as $category)
-                                        <div class="be-radio inline">
-                                            <input type="radio" class="radio" name="rad10" id="rad_{{ $category->id }}">
-                                            <label for="rad1">{{ $category->name }}</label>
-                                        </div>
+                                        @if($category->status)
+                                            <div class="be-radio inline">
+                                                <input type="radio" class="radio" id="rad_{{ $category->id }}"
+                                                       @if($edit && $category->id == $product->category_id) checked @endif>
+                                                <label for="rad_{{ $category->id }}">{{ $category->name }}</label>
+                                            </div>
+                                        @else
+                                            <div class="be-radio inline">
+                                                <input type="radio" class="radio" id="rad_{{ $category->id }}" disabled>
+                                                <label for="rad_{{ $category->id }}">{{ $category->name }}</label>
+                                            </div>
+                                        @endif
+
                                     @endforeach
                                     {{--<div class="be-radio inline">
                                         <input type="radio" class="radio" name="rad10" id="rad2">
@@ -114,7 +123,7 @@
                                 <label class="col-sm-3 control-label">Modelo</label>
                                 <div class="col-sm-7">
                                     <input type="text" placeholder="Modelo Produto" value="@if($edit){{ $product->model }}@endif"
-                                           class="form-control" id="model" name="brand">
+                                           class="form-control" id="model" name="model">
                                 </div>
                             </div>
                             <div class="form-group">

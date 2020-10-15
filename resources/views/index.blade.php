@@ -36,7 +36,7 @@
                     <li class="dropdown">
                         <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle">
                             <img src="../../assets/img/avatar.png" alt="Avatar">
-                            <span class="user-name">Túpac Amaru</span>
+                            <span class="user-name">{{ Auth::getUser()->person->name }}</span>
                         </a>
                         <ul role="menu" class="dropdown-menu">
                             <li>
@@ -85,7 +85,7 @@
                                     </li>
                                     <li><a href="{{ route('product.create') }}">Adicionar Novo</a>
                                     </li>
-                                    <li><a href="status-produto.html">Status</a>
+                                    <li><a href="{{ route('product.deleted') }}">Excluídos</a>
                                     </li>
                                 </ul>
                             </li>
@@ -94,8 +94,6 @@
                                     <li><a href="{{ route('product.index.category') }}">Listar</a>
                                     </li>
                                     <li><a href="{{ route('product.create.category') }}">Adicionar Novo</a>
-                                    </li>
-                                    <li><a href="status-categoria.html">Status</a>
                                     </li>
                                 </ul>
                             </li>

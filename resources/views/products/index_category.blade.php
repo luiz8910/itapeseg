@@ -20,13 +20,20 @@
                                 <tr>
                                     <td class="user-avatar">{{ ucfirst($category->name) }}</td>
                                     <td>
-                                        @if($category->active)
+                                        @if($category->status)
                                             <span class="label label-success">Online</span>
                                         @else
                                             <span class="label label-danger">Offline</span>
                                         @endif
                                     </td>
-                                    <td class="actions"><a href="{{ route('product.edit.category', ['id' => $category->id]) }}" class="icon"><i class="mdi mdi-edit"></i></a></td>
+                                    <td class="actions">
+                                        <a href="{{ route('product.edit.category', ['id' => $category->id]) }}" class="icon">
+                                            <i class="mdi mdi-edit"></i>
+                                        </a>
+                                        <a href="javascript:" class="icon" onclick="destroy_category({!! $category->id !!})">
+                                            <i class="mdi mdi-delete" style="margin-left: 10px;"></i>
+                                        </a>
+                                    </td>
                                 </tr>
                             @endforeach
                             {{--<tr>

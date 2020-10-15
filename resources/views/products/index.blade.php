@@ -14,14 +14,12 @@
                         <form action="#" class="form-horizontal">
                             <div class="form-group">
                                 <div class="col-xs-6 col-md-6">
-                                    <select class="form-control">
+                                    <select class="form-control" id="category_select">
                                         <option value="" selected>Categoria</option>
+                                        <option value="0">Todas</option>
                                         @foreach($categories as $category)
-                                            @if($category->name == 'CFTV')
-                                                <option value="{{ $category->id }}">{{ strtoupper($category->name) }}</option>
-                                            @else
-                                                <option value="{{ $category->id }}">{{ ucfirst($category->name) }}</option>
-                                            @endif
+                                            <option value="{{ $category->id }}" @if(!$category->status) disabled @endif>{{ ucfirst($category->name) }}</option>
+
                                         @endforeach
                                         {{--<option value="1" selected="">Categoria</option>
                                         <option value="2">CFTV</option>
@@ -62,31 +60,27 @@
                             </thead>
                             <tbody>
                             @foreach($products as $product)
-                                <tr>
-                                    <td class="user-avatar"> <img src="assets/img/avatar6.png" alt="Avatar">{{ $product->name }}</td>
-                                    <td>CFTV</td>
+                                <tr id="model_{{ $product->id }}">
+                                    <td class="user-avatar"> <img src="../../assets/img/avatar6.png" alt="Avatar">{{ $product->name }}</td>
+                                    <td>{{ $product->category_name }}</td>
                                     <td><span class="label label-success">Disponivel</span></td>
-                                    <td class="actions"><a href="#" class="icon"><i class="mdi mdi-edit"></i></a></td>
+                                    <td class="actions">
+                                        <a href="{{ route('product.edit', ['id' => $product->id]) }}" class="icon">
+                                            <i class="mdi mdi-edit"></i>
+                                        </a>
+                                        @if(isset($deleted))
+                                            <a href="javascript:" class="icon" onclick="activate({!! $product->id !!})" title="Reativar Produto">
+                                                <i class="mdi mdi-long-arrow-up" style="margin-left: 10px;"></i>
+                                            </a>
+                                        @else
+                                        <a href="javascript:" class="icon" onclick="destroy({!! $product->id !!})" title="Excluir produto">
+                                            <i class="mdi mdi-delete" style="margin-left: 10px;"></i>
+                                        </a>
+                                        @endif
+                                    </td>
                                 </tr>
                             @endforeach
-                            <tr>
-                                <td class="user-avatar"> <img src="assets/img/avatar4.png" alt="Avatar">Haste de cerca eletrica</td>
-                                <td>Cercas Perimetrais</td>
-                                <td><span class="label label-success">Disponivel</span></td>
-                                <td class="actions"><a href="#" class="icon"><i class="mdi mdi-edit"></i></a></td>
-                            </tr>
-                            <tr>
-                                <td class="user-avatar"> <img src="assets/img/avatar5.png" alt="Avatar">Roteador tp-link</td>
-                                <td>Redes</td>
-                                <td><span class="label label-danger">Em falta</span></td>
-                                <td class="actions"><a href="#" class="icon"><i class="mdi mdi-edit"></i></a></td>
-                            </tr>
-                            <tr>
-                                <td class="user-avatar"> <img src="assets/img/avatar3.png" alt="Avatar">Bateria selada 12v 7a</td>
-                                <td>Acessorios</td>
-                                <td><span class="label label-success">Disponivel</span></td>
-                                <td class="actions"><a href="#" class="icon"><i class="mdi mdi-edit"></i></a></td>
-                            </tr>
+
                             </tbody>
                         </table>
                     </div>

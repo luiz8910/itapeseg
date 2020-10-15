@@ -34,11 +34,11 @@
                                 <div class="col-sm-7">
                                     <div class="be-radio be-radio-color has-success inline">
                                         <input type="radio" class="radio_active" @if($edit && $category->active) checked @elseif(!$edit) checked @endif name="active" id="rad_active">
-                                        <label for="rad34">Online</label>
+                                        <label for="rad_active">Online</label>
                                     </div>
                                     <div class="be-radio be-radio-color has-danger inline">
                                         <input type="radio" class="radio_active" @if($edit && !$category->active) checked @endif name="inactive" id="rad_inactive">
-                                        <label for="rad36">Offline</label>
+                                        <label for="rad_inactive">Offline</label>
                                     </div>
                                 </div>
                             </div> <br><br><br>
