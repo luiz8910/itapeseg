@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Repositories\ProductCategoryRepository;
 use App\Repositories\ProductRepository;
+use App\Repositories\SubCatChooseRepository;
 use App\Repositories\SubCategoryRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -22,12 +23,18 @@ class ProductController extends Controller
      * @var SubCategoryRepository
      */
     private $subCategory;
+    /**
+     * @var SubCatChooseRepository
+     */
+    private $subCatChoose;
 
-    public function __construct(ProductRepository $repository, ProductCategoryRepository $categories, SubCategoryRepository $subCategory)
+    public function __construct(ProductRepository $repository, ProductCategoryRepository $categories,
+                                SubCategoryRepository $subCategory, SubCatChooseRepository $subCatChoose)
     {
         $this->repository = $repository;
         $this->categories = $categories;
         $this->subCategory = $subCategory;
+        $this->subCatChoose = $subCatChoose;
     }
 
     public function index($category_id = null)
@@ -64,11 +71,13 @@ class ProductController extends Controller
 
         $categories = $this->categories->findByField('active', 1);
 
+        $sub = $this->subCategory->findWhere(['status' => 1, 'active' => 1]);
+
         /*foreach ($categories as $category)
             $category->name = $category->name == "CFTV" ? $category->name : ucfirst(strtolower($category->name));*/
 
 
-        return view('index', compact('route', 'edit', 'scripts', 'categories'));
+        return view('index', compact('route', 'edit', 'scripts', 'categories', 'sub'));
     }
 
     public function edit($id)
@@ -83,15 +92,21 @@ class ProductController extends Controller
 
         $categories = $this->categories->findByField('active', 1);
 
+        $sub = $this->subCategory->findWhere(['status' => 1, 'active' => 1]);
+
+        $choose = $this->subCatChoose->findByField('product_id', $id);
+
         if($product)
-            return view('index', compact('route', 'edit', 'scripts', 'product', 'categories'));
+            return view('index', compact('route', 'edit', 'scripts', 'product', 'categories', 'sub', 'choose'));
 
         return abort(404);
     }
 
     public function store(Request $request)
     {
-        $data = $request->all();
+        $data = $request->only(['name', 'code', 'brand', 'model', 'description', 'active', 'category_id']);
+
+        $sub = $request->except(['name', 'code', 'brand', 'model', 'description', 'active', 'category_id']);
 
         if(isset($data['active']))
             $data['status'] = 1;
@@ -112,7 +127,16 @@ class ProductController extends Controller
 
         try {
 
-            $this->repository->create($data);
+            $id = $this->repository->create($data)->id;
+
+            foreach (array_keys($sub) as $s)
+            {
+                $c['product_id'] = $id;
+                $c['sub_id'] = $s;
+
+                $this->subCatChoose->create($c);
+            }
+
 
             DB::commit();
 
@@ -131,7 +155,9 @@ class ProductController extends Controller
 
     public function update(Request $request, $id)
     {
-        $data = $request->all();
+        $data = $request->only(['name', 'code', 'brand', 'model', 'description', 'active', 'category_id']);
+
+        $sub = $request->except(['name', 'code', 'brand', 'model', 'description', 'active', 'category_id', '_method']);
 
         if(isset($data['active']))
             $data['status'] = 1;
@@ -162,6 +188,19 @@ class ProductController extends Controller
 
             $this->repository->update($data, $id);
 
+            $choices = $this->subCatChoose->findByField('product_id', $id);
+
+            foreach($choices as $choice)
+                $this->subCatChoose->delete($choice->id);
+
+            foreach (array_keys($sub) as $s)
+            {
+                $c['product_id'] = $id;
+                $c['sub_id'] = $s;
+
+                $this->subCatChoose->create($c);
+            }
+
             DB::commit();
 
             $request->session()->flash('success.msg', 'O produto foi alterado com sucesso');
@@ -174,7 +213,7 @@ class ProductController extends Controller
             dd($e);
         }
 
-        return redirect()->back();
+        return redirect()->route('product.index');
     }
 
     public function delete($id)

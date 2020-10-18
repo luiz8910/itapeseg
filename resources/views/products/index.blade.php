@@ -61,9 +61,17 @@
                             <tbody>
                             @foreach($products as $product)
                                 <tr id="model_{{ $product->id }}">
-                                    <td class="user-avatar"> <img src="../../assets/img/avatar6.png" alt="Avatar">{{ $product->name }}</td>
+
+                                    <td class="user-avatar"> <img src="../../assets/img/avatar6.png" alt="Avatar">
+                                        <a href="{{ route('product.edit', ['id' => $product->id]) }}" style="color: #0b0b0b;">
+                                            {{ $product->name }}
+                                        </a>
+                                    </td>
+
                                     <td>{{ $product->category_name }}</td>
+
                                     <td><span class="label label-success">Disponivel</span></td>
+
                                     <td class="actions">
                                         <a href="{{ route('product.edit', ['id' => $product->id]) }}" class="icon">
                                             <i class="mdi mdi-edit"></i>

@@ -1,10 +1,10 @@
 <div class="be-content">
     <div class="page-head">
-        <h2 class="page-head-title">Novo Produto</h2>
+        <h2 class="page-head-title">@if($edit) Alterar produto "{{ $product->name }}" @else Novo Produto @endif</h2>
         <ol class="breadcrumb page-head-nav">
             <li><a href="#">Dashboard</a></li>
             <li><a href="#">Produtos</a></li>
-            <li class="active">Cadastrar Novo</li>
+            <li class="active">@if($edit) Alterar produto "{{ $product->name }}" @else Cadastrar Novo @endif</li>
         </ol>
     </div>
     <div class="main-content container-fluid">
@@ -12,7 +12,7 @@
             <div class="col-md-12">
                 <div class="panel panel-default panel-border-color panel-border-color-primary">
                     <div class="panel-heading panel-heading-divider">
-                        Cadastrar Novo Produto
+                        @if($edit) Alterar produto "{{ $product->name }}" @else Cadastrar Novo Produto @endif
                         {{--<span class="panel-subtitle">Cadastrar Novo produto para aparecer no catalago</span>--}}
                     </div>
                     <div class="panel-body">
@@ -34,13 +34,13 @@
                                     @foreach($categories as $category)
                                         @if($category->status)
                                             <div class="be-radio inline">
-                                                <input type="radio" disabled class="radio" id="rad_{{ $category->id }}"
+                                                <input type="radio" class="radio" id="rad_{{ $category->id }}"
                                                        @if($edit && $category->id == $product->category_id) checked @endif>
                                                 <label for="rad_{{ $category->id }}">{{ $category->name }}</label>
                                             </div>
                                         @else
                                             <div class="be-radio inline">
-                                                <input type="radio" disabled class="radio" id="rad_{{ $category->id }}" disabled>
+                                                <input type="radio" class="radio" id="rad_{{ $category->id }}" disabled>
                                                 <label for="rad_{{ $category->id }}">{{ $category->name }}</label>
                                             </div>
                                         @endif
@@ -72,30 +72,18 @@
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">Subcategoria</label>
                                 <div class="col-sm-7">
-                                    <div class="be-checkbox inline">
-                                        <input id="check1" type="checkbox">
-                                        <label for="check1">1MP</label>
-                                    </div>
-                                    <div class="be-checkbox inline">
-                                        <input id="check2" type="checkbox">
-                                        <label for="check2">IP</label>
-                                    </div>
-                                    <div class="be-checkbox inline">
-                                        <input id="check3" type="checkbox">
-                                        <label for="check3">2mp</label>
-                                    </div>
-                                    <div class="be-checkbox inline">
-                                        <input id="check4" type="checkbox">
-                                        <label for="check4">WIFI</label>
-                                    </div>
-                                    <div class="be-checkbox inline">
-                                        <input id="check5" type="checkbox">
-                                        <label for="check5">DVR</label>
-                                    </div>
-                                    <div class="be-checkbox inline">
-                                        <input id="check6" type="checkbox">
-                                        <label for="check6">HVR</label>
-                                    </div>
+                                    @foreach($sub as $s)
+                                        <div class="be-checkbox inline">
+                                            <input id="{{ $s->id }}" name="{{ $s->id }}" type="checkbox"
+                                                @if($edit)
+                                                    @foreach($choose as $c)
+                                                        @if($s->id == $c->sub_id) checked @endif
+                                                    @endforeach
+                                                @endif
+                                            >
+                                            <label for="{{ $s->id }}">{{ $s->name }}</label>
+                                        </div>
+                                    @endforeach
                                 </div>
                             </div>
                             <div class="form-group">
@@ -138,11 +126,11 @@
                                 <label class="col-sm-3 control-label">Status do Produto</label>
                                 <div class="col-sm-7">
                                     <div class="be-radio be-radio-color has-success inline">
-                                        <input type="radio" @if($edit && $product->status) checked @elseif(!$edit) checked @endif name="active" id="rad34">
+                                        <input type="radio" @if($edit && $product->status) checked @elseif(!$edit) checked @endif name="active" id="rad34" class="radio_active">
                                         <label for="rad34">Disponivel</label>
                                     </div>
                                     <div class="be-radio be-radio-color has-danger inline">
-                                        <input type="radio" @if($edit && !$product->status) checked @endif name="inactive" id="rad36">
+                                        <input type="radio" @if($edit && !$product->status) checked @endif name="inactive" id="rad36" class="radio_active">
                                         <label for="rad36">Em falta</label>
                                     </div>
                                 </div>
@@ -150,8 +138,7 @@
                             <div class="form-group">
                                 <label class="col-sm-3 control-label"></label>
                                 <div class="col-sm-7">
-                                    <button type="submit" class="btn btn-rounded btn-space btn-success btn-lg"
-                                            {{--@if($edit)onclick="add_update({!! $product->id !!})" @else onclick="add_update()"@endif--}}>
+                                    <button type="submit" class="btn btn-rounded btn-space btn-success btn-lg">
                                         <i class="icon icon-left mdi mdi-check"></i>
                                         Salvar
                                     </button>

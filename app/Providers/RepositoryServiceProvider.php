@@ -8,6 +8,8 @@ use App\Repositories\ProductCategoryRepository;
 use App\Repositories\ProductCategoryRepositoryEloquent;
 use App\Repositories\ProductRepository;
 use App\Repositories\ProductRepositoryEloquent;
+use App\Repositories\SubCatChooseRepository;
+use App\Repositories\SubCatChooseRepositoryEloquent;
 use App\Repositories\SubCategoryRepository;
 use App\Repositories\SubCategoryRepositoryEloquent;
 use App\Repositories\UserRepository;
@@ -28,6 +30,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(ProductRepository::class, ProductRepositoryEloquent::class);
         $this->app->bind(ProductCategoryRepository::class, ProductCategoryRepositoryEloquent::class);
         $this->app->bind(SubCategoryRepository::class, SubCategoryRepositoryEloquent::class);
+        $this->app->bind(SubCatChooseRepository::class, SubCatChooseRepositoryEloquent::class);
     }
 
     /**

@@ -1,6 +1,6 @@
 $(function (){
 
-    $("input[type='radio']").attr('disabled', false);
+    //$("input[type='radio']").attr('disabled', false);
 
 
     $("#form").submit(function (e){
@@ -39,19 +39,23 @@ $(function (){
         }
 
         $("#rad_"+id).prop('checked', true);
-
-        console.log($("#category_id").val());
     });
 
 
     $("#category_select").change(function (){
 
-        location.href = "/produtos/"+$(this).val();
+        if($(this).val() == 0)
+            location.href = '/produtos';
+        else
+            location.href = "/produtos/"+$(this).val();
     });
 
     $("#category_select_sub").change(function (){
 
-        location.href = "/subcategorias_produtos/"+$(this).val();
+        if($(this).val() == 0)
+            location.href = "/subcategorias_produtos"
+        else
+            location.href = "/subcategorias_produtos/"+$(this).val();
     });
 });
 
