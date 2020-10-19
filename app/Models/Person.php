@@ -22,7 +22,8 @@ class Person extends Model implements Transformable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'cpf', 'cel', 'date_birth', 'zip_code', 'street', 'number', 'district', 'city', 'state'
+        'name', 'email', 'cpf', 'cel', 'date_birth', 'zip_code',
+        'street', 'number', 'district', 'city', 'state', 'status', 'active'
     ];
 
     protected $dates = ['deleted_at'];

@@ -156,9 +156,11 @@
                             <li class="divider">Configuração</li>
                             <li class="parent"><a href="#"><i class="icon mdi mdi-accounts-alt"></i><span>Usuarios</span></a>
                                 <ul class="sub-menu">
-                                    <li><a href="listar-usuarios.html">Listar Usuarios</a>
+                                    <li><a href="{{ route('person.index') }}">Listar Usuarios</a>
                                     </li>
-                                    <li><a href="cadastrar-usuario.html">Adicionar</a>
+                                    <li><a href="{{ route('person.create') }}">Adicionar</a>
+                                    </li>
+                                    <li><a href="{{ route('person.deleted') }}">Excluídos</a>
                                     </li>
                                 </ul>
                             </li>

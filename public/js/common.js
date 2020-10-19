@@ -1,3 +1,20 @@
+$(function (){
+
+    $(".radio_active").click(function (){
+
+        var id = $(this)[0].id;
+
+        if(id == "rad_inactive")
+            $("#rad_active").prop('checked', false);
+
+        else
+            $("#rad_inactive").prop('checked', false);
+
+
+    });
+
+})
+
 function sweet_alert_error($msg, $timer) {
     var msg = $msg ? $msg : 'Um erro desconhecido ocorreu, tente novamente mais tarde';
 

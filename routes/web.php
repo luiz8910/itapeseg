@@ -98,4 +98,24 @@ Route::group(['middleware' => 'auth'], function (){
 
     Route::get('/activate_subcategory/{id}', 'ProductController@activate_category_sub');
 
+//----------------------------------------------------------------------------------------------------------------------
+
+    //Usuários
+
+    Route::get('/usuario/', 'PersonController@index')->name('person.index');
+
+    Route::get('/criar_usuario', 'PersonController@create')->name('person.create');
+
+    Route::get('/editar_usuario/{id}', 'PersonController@edit')->name('person.edit');
+
+    Route::post('/usuario', 'PersonController@store')->name('person.store');
+
+    Route::put('/usuario/{id}', 'PersonController@update')->name('person.update');
+
+    Route::delete('/usuario/{id}', 'PersonController@delete');
+
+    Route::get('/usuarios_excluidos', "PersonController@deleted")->name('person.deleted');
+
+    Route::get('/activate_user/{id}', 'PersonController@activate');
+
 });

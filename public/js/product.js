@@ -12,18 +12,7 @@ $(function (){
         }
     });
 
-    $(".radio_active").click(function (){
 
-        var id = $(this)[0].id;
-
-        if(id == "rad_inactive")
-            $("#rad_active").prop('checked', false);
-
-        else
-            $("#rad_inactive").prop('checked', false);
-
-
-    });
 
     $(".radio").click(function (){
 
