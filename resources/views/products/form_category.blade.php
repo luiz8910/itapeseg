@@ -16,10 +16,10 @@
                     </div>
                     <div class="panel-body">
                         @if($edit)
-                            <form action="{{ route('product.update.category', ['id' => $category->id]) }}" method="POST" style="border-radius: 0px;" class="form-horizontal group-border-dashed">
+                            <form action="{{ route('product.update.category', ['id' => $category->id]) }}" method="POST" style="border-radius: 0px;" class="form-horizontal group-border-dashed" enctype="multipart/form-data">
                             @method('PUT')
                         @else
-                            <form action="{{ route('product.store.category') }}" method="POST" style="border-radius: 0px;" class="form-horizontal group-border-dashed">
+                            <form action="{{ route('product.store.category') }}" method="POST" style="border-radius: 0px;" class="form-horizontal group-border-dashed" enctype="multipart/form-data">
                         @endif
 
                             <div class="form-group">
@@ -29,15 +29,32 @@
                                            name="name" id="name" value="@if($edit){{ $category->name }}@endif" required>
                                 </div>
                             </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Imagem</label>
+                                <div class="col-sm-7">
+                                    <button type="button" class="btn btn-primary" id="upload" onclick="upload_view();">
+                                        <i class="mdi mdi-cloud-upload"></i>
+                                        Upload de Imagem
+                                    </button>
+
+                                    <img id="preview_img" class="img-preview" src="@if($edit){{ str_replace('public', '/storage', $category->picture) }}@endif">
+
+                                    {{--<img id="" class="" src="storage/uploads/vWpB9n3QVl6nnZ0CJKyhHiVc1qlrgqm6IHCTudX0.png">--}}
+
+                                    <input type="file" name="file" id="file" style="display:none;">
+                                </div>
+                            </div>
+
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">Status da Categoria</label>
                                 <div class="col-sm-7">
                                     <div class="be-radio be-radio-color has-success inline">
-                                        <input type="radio" disabled class="radio_active" @if($edit && $category->active) checked @elseif(!$edit) checked @endif name="active" id="rad_active">
+                                        <input type="radio" disabled class="radio_active" @if($edit && $category->status) checked @elseif(!$edit) checked @endif name="active" id="rad_active">
                                         <label for="rad_active">Online</label>
                                     </div>
                                     <div class="be-radio be-radio-color has-danger inline">
-                                        <input type="radio" disabled class="radio_active" @if($edit && !$category->active) checked @endif name="inactive" id="rad_inactive">
+                                        <input type="radio" disabled class="radio_active" @if($edit && !$category->status) checked @endif name="inactive" id="rad_inactive">
                                         <label for="rad_inactive">Offline</label>
                                     </div>
                                 </div>

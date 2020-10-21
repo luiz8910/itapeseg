@@ -22,7 +22,7 @@ class Product extends Model implements Transformable
      * @var array
      */
     protected $fillable = [
-        'name', 'code', 'brand', 'model', 'img',
+        'name', 'code', 'brand', 'model', 'picture',
         'description', 'status', 'category_id', 'active'
     ];
 

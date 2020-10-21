@@ -6,11 +6,15 @@ use App\Repositories\ProductCategoryRepository;
 use App\Repositories\ProductRepository;
 use App\Repositories\SubCatChooseRepository;
 use App\Repositories\SubCategoryRepository;
+use App\Traits\Config;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
+    use Config;
+
     /**
      * @var ProductRepository
      */
@@ -104,9 +108,9 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        $data = $request->only(['name', 'code', 'brand', 'model', 'description', 'active', 'category_id']);
+        $data = $request->only(['name', 'code', 'brand', 'model', 'description', 'active', 'category_id', 'file']);
 
-        $sub = $request->except(['name', 'code', 'brand', 'model', 'description', 'active', 'category_id']);
+        $sub = $request->except(['name', 'code', 'brand', 'model', 'description', 'active', 'category_id', 'file']);
 
         if(isset($data['active']))
             $data['status'] = 1;
@@ -126,6 +130,14 @@ class ProductController extends Controller
         DB::beginTransaction();
 
         try {
+            $file = $request->file('file');
+
+            if($file)
+            {
+                $path = $file->store('public/uploads');
+
+                $data['picture'] = $path;
+            }
 
             $id = $this->repository->create($data)->id;
 
@@ -155,9 +167,9 @@ class ProductController extends Controller
 
     public function update(Request $request, $id)
     {
-        $data = $request->only(['name', 'code', 'brand', 'model', 'description', 'active', 'category_id']);
+        $data = $request->only(['name', 'code', 'brand', 'model', 'description', 'active', 'category_id', 'file']);
 
-        $sub = $request->except(['name', 'code', 'brand', 'model', 'description', 'active', 'category_id', '_method']);
+        $sub = $request->except(['name', 'code', 'brand', 'model', 'description', 'active', 'category_id', '_method', 'file']);
 
         if(isset($data['active']))
             $data['status'] = 1;
@@ -185,6 +197,14 @@ class ProductController extends Controller
         DB::beginTransaction();
 
         try {
+            $file = $request->file('file');
+
+            if($file)
+            {
+                $path = $file->store('public/uploads');
+
+                $data['picture'] = $path;
+            }
 
             $this->repository->update($data, $id);
 
@@ -334,6 +354,8 @@ class ProductController extends Controller
     {
         $data = $request->all();
 
+        //dd($data);
+
         if(isset($data['active']))
             $data['status'] = 1;
         else
@@ -351,6 +373,14 @@ class ProductController extends Controller
         DB::beginTransaction();
 
         try {
+            $file = $request->file('file');
+
+            if($file)
+            {
+                $path = $file->store('public/uploads');
+
+                $data['picture'] = $path;
+            }
 
             $this->categories->create($data);
 
@@ -398,6 +428,16 @@ class ProductController extends Controller
         DB::beginTransaction();
 
         try {
+
+            $file = $request->file('file');
+
+            if($file)
+            {
+                $path = $file->store('public/uploads');
+
+                $data['picture'] = $path;
+            }
+
 
             $this->categories->update($data, $id);
 
@@ -453,7 +493,7 @@ class ProductController extends Controller
     {
         $scripts[] = '../../js/product.js';
 
-        $route = 'products.index.category';
+        $route = 'products.index_category';
 
         $categories = $this->categories->findByField('active', 0);
 
@@ -469,7 +509,7 @@ class ProductController extends Controller
         DB::beginTransaction();
 
         try {
-            if($sub)
+            if($category)
             {
                 $p['active'] = 1;
 
@@ -485,6 +525,7 @@ class ProductController extends Controller
             DB::rollBack();
 
             return json_encode(['status' => false, 'msg' => 'Houve um erro ao ativar esta categoria, tente novamente mais tarde']);
+            //return json_encode(['status' => false, 'msg' => $e->getMessage()]);
         }
     }
 

@@ -115,6 +115,21 @@
                                 </div>
                             </div>
                             <div class="form-group">
+                                <label class="col-sm-3 control-label">Imagem</label>
+                                <div class="col-sm-7">
+                                    <button type="button" class="btn btn-primary" id="upload" onclick="upload_view();">
+                                        <i class="mdi mdi-cloud-upload"></i>
+                                        Upload de Imagem
+                                    </button>
+
+                                    <img id="preview_img" class="img-preview" src="@if($edit){{ str_replace('public', '/storage', $product->picture) }}@endif">
+
+                                    {{--<img id="" class="" src="storage/uploads/vWpB9n3QVl6nnZ0CJKyhHiVc1qlrgqm6IHCTudX0.png">--}}
+
+                                    <input type="file" name="file" id="file" style="display:none;">
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <label class="col-sm-3 control-label">Observação</label>
                                 <div class="col-sm-7">
                                     <textarea placeholder="Digite aqui informações importantes sobre o produto"

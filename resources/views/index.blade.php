@@ -15,6 +15,7 @@
     <link rel="stylesheet" type="text/css" href="../../assets/lib/jqvmap/jqvmap.min.css" />
     <link rel="stylesheet" type="text/css" href="../../assets/lib/datetimepicker/css/bootstrap-datetimepicker.min.css" />
     <link rel="stylesheet" href="../../assets/css/style.css" type="text/css" />
+    <link rel="stylesheet" href="../../css/common.css" type="text/css" />
 
 <!--------------------------------------------Custom CSS--------------------------------------------------------------->
     @if(isset($links))
@@ -56,7 +57,7 @@
                         </ul>
                     </li>
                 </ul>
-                <div class="page-title"><span>Dashboard</span></div>
+                <div class="page-title"><span></span></div>
                 <ul class="nav navbar-nav navbar-right be-icons-nav">
                     <li class="dropdown">
                         <a href="#" role="button" aria-expanded="false" class="be-toggle-right-sidebar">

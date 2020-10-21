@@ -1,7 +1,14 @@
-.has-success{
+.has-success-input{
     border: 2px solid green;
 }
 
-.has-error{
+.has-error-input{
     border: 2px solid red;
+}
+
+.img-preview{
+    display: block;
+    max-width: 200px;
+    max-height: 200px;
+    margin-top: 15px;
 }

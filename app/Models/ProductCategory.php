@@ -20,6 +20,6 @@ class ProductCategory extends Model implements Transformable
      *
      * @var array
      */
-    protected $fillable = ['name', 'active'];
+    protected $fillable = ['name', 'active', 'picture', 'status'];
 
 }

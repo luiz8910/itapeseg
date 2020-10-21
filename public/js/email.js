@@ -70,12 +70,12 @@ function verify_password()
     if($("#password").val() !== $("#password_confirm").val())
     {
         $("#password")
-            .addClass('has-error')
-            .removeClass('has-success');
+            .addClass('has-error-input')
+            .removeClass('has-success-input');
 
         $("#password_confirm")
-            .addClass('has-error')
-            .removeClass('has-success');
+            .addClass('has-error-input')
+            .removeClass('has-success-input');
 
         $("#password_span")
             .css('display', 'block')
@@ -89,12 +89,12 @@ function verify_password()
         if($("#password").val().length >= 8)
         {
             $("#password")
-                .removeClass('has-error')
-                .addClass('has-success');
+                .removeClass('has-error-input')
+                .addClass('has-success-input');
 
             $("#password_confirm")
-                .removeClass('has-error')
-                .addClass('has-success');
+                .removeClass('has-error-input')
+                .addClass('has-success-input');
 
             $("#password_span")
                 .css('display', 'block')
@@ -106,12 +106,12 @@ function verify_password()
         }
         else{
             $("#password")
-                .addClass('has-error')
-                .removeClass('has-success');
+                .addClass('has-error-input')
+                .removeClass('has-success-input');
 
             $("#password_confirm")
-                .addClass('has-error')
-                .removeClass('has-success');
+                .addClass('has-error-input')
+                .removeClass('has-success-input');
 
             $("#password_span")
                 .css('display', 'block')

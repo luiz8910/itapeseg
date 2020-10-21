@@ -1,6 +1,6 @@
 $(function (){
 
-    //$("input[type='radio']").attr('disabled', false);
+    $(".radio_active").attr('disabled', false);
 
 
     $("#form").submit(function (e){
@@ -45,6 +45,10 @@ $(function (){
             location.href = "/subcategorias_produtos"
         else
             location.href = "/subcategorias_produtos/"+$(this).val();
+    });
+
+    $("#file").change(function (){
+        preview_file($(this));
     });
 });
 
@@ -170,4 +174,26 @@ function destroy_category_sub($id)
     };
 
     sweet_alert(data, ajax);
+}
+
+function preview_file(input)
+{
+    var file = $("input[type=file]").get(0).files[0];
+
+    if(file){
+        var reader = new FileReader();
+
+        reader.onload = function(){
+            $("#preview_img").attr("src", reader.result).css('display', 'block');
+            $("#upload").text('Trocar Imagem');
+            console.log($("#upload"));
+        }
+
+        reader.readAsDataURL(file);
+    }
+}
+
+function upload_view()
+{
+    $("#file").trigger('click');
 }

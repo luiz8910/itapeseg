@@ -62,7 +62,12 @@
                             @foreach($products as $product)
                                 <tr id="model_{{ $product->id }}">
 
-                                    <td class="user-avatar"> <img src="../../assets/img/avatar6.png" alt="Avatar">
+                                    <td class="user-avatar">
+                                        @if($product->picture)
+                                            <img src="{{ str_replace('public', '/storage', $product->picture) }}" alt="Avatar">
+                                        @else
+                                            <img src="noimage.png" alt="Avatar">
+                                        @endif
                                         <a href="{{ route('product.edit', ['id' => $product->id]) }}" style="color: #0b0b0b;">
                                             {{ $product->name }}
                                         </a>
