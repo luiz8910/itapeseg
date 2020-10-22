@@ -35,6 +35,12 @@ Route::get('teste_email', function (){
     return new App\Mail\ForgotPassword();
 });
 
+//Catálogo
+
+Route::get('catalogo', 'ProductController@catalogo')->name('category.catalogo');
+
+Route::get('catalogo_produtos/{category_id}', 'ProductController@catalogo_products')->name('product.catalogo');
+
 
 Route::group(['middleware' => 'auth'], function (){
 
@@ -117,5 +123,9 @@ Route::group(['middleware' => 'auth'], function (){
     Route::get('/usuarios_excluidos', "PersonController@deleted")->name('person.deleted');
 
     Route::get('/activate_user/{id}', 'PersonController@activate');
+
+//----------------------------------------------------------------------------------------------------------------------
+
+
 
 });

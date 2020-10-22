@@ -743,6 +743,37 @@ class ProductController extends Controller
             return json_encode(['status' => false, 'msg' => 'Houve um erro ao ativar esta subcategoria, tente novamente mais tarde']);
         }
     }
+
+    public function catalogo()
+    {
+        $categories = $this->categories->findByField('active', 1);
+
+        return view('catalogo.index', compact('categories'));
+    }
+
+    public function catalogo_products($category_id)
+    {
+        $category = $this->categories->findByField('id', $category_id)->first();
+
+        if($category)
+        {
+            $sub = $this->subCategory->findByField('category_id', $category_id);
+
+            $products = $this->repository->findByField('category_id', $category_id);
+
+            foreach ($products as $product)
+            {
+                $product->choose = $this->subCatChoose->findByField('product_id', $product->id);
+                //dd($product);
+            }
+
+
+
+            return view('catalogo.product', compact('category', 'sub', 'products'));
+        }
+
+
+    }
 }
 
 
