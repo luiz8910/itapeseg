@@ -141,12 +141,12 @@
                                 <label class="col-sm-3 control-label">Status do Produto</label>
                                 <div class="col-sm-7">
                                     <div class="be-radio be-radio-color has-success inline">
-                                        <input type="radio" @if($edit && $product->status) checked @elseif(!$edit) checked @endif name="active" id="rad34" class="radio_active">
-                                        <label for="rad34">Disponivel</label>
+                                        <input type="radio" @if($edit && $product->status) checked @elseif(!$edit) checked @endif name="active" id="rad_active" class="radio_active">
+                                        <label for="rad_active">Disponivel</label>
                                     </div>
                                     <div class="be-radio be-radio-color has-danger inline">
-                                        <input type="radio" @if($edit && !$product->status) checked @endif name="inactive" id="rad36" class="radio_active">
-                                        <label for="rad36">Em falta</label>
+                                        <input type="radio" @if($edit && !$product->status) checked @endif name="inactive" id="rad_inactive" class="radio_active">
+                                        <label for="rad_inactive">Em falta</label>
                                     </div>
                                 </div>
                             </div> <br><br><br>

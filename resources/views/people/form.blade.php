@@ -61,12 +61,12 @@
                                 <label class="col-sm-3 control-label">Status do Usuário</label>
                                 <div class="col-sm-7">
                                     <div class="be-radio be-radio-color has-success inline">
-                                        <input type="radio" class="radio_active" name="active" id="rad34" @if($edit && $person->status) checked @elseif(!$edit) checked @endif>
-                                        <label for="rad34">Disponível</label>
+                                        <input type="radio" class="radio_active" name="active" id="rad_active" @if($edit && $person->status) checked @elseif(!$edit) checked @endif>
+                                        <label for="rad_active">Disponível</label>
                                     </div>
                                     <div class="be-radio be-radio-color has-danger inline">
-                                        <input type="radio" class="radio_active" name="inactive" id="rad36" @if($edit && !$person->status) checked @endif>
-                                        <label for="rad36">Bloqueado</label>
+                                        <input type="radio" class="radio_active" name="inactive" id="rad_inactive" @if($edit && !$person->status) checked @endif>
+                                        <label for="rad_inactive">Bloqueado</label>
                                     </div>
                                 </div>
                             </div> <br><br><br>

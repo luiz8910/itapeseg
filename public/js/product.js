@@ -13,7 +13,6 @@ $(function (){
     });
 
 
-
     $(".radio").click(function (){
 
         var id = this.id.replace('rad_', '');
