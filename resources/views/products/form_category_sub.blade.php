@@ -49,11 +49,11 @@
                                             <label class="col-sm-3 control-label">Status da SubCategoria</label>
                                             <div class="col-sm-7">
                                                 <div class="be-radio be-radio-color has-success inline">
-                                                    <input type="radio" disabled class="radio_active" @if($edit && $sub->active) checked @elseif(!$edit) checked @endif name="active" id="rad_active">
+                                                    <input type="radio" disabled class="radio_active" @if($edit && $sub->status) checked @elseif(!$edit) checked @endif name="active" id="rad_active">
                                                     <label for="rad_active">Online</label>
                                                 </div>
                                                 <div class="be-radio be-radio-color has-danger inline">
-                                                    <input type="radio" disabled class="radio_active" @if($edit && !$sub->active) checked @endif name="inactive" id="rad_inactive">
+                                                    <input type="radio" disabled class="radio_active" @if($edit && !$sub->status) checked @endif name="inactive" id="rad_inactive">
                                                     <label for="rad_inactive">Offline</label>
                                                 </div>
                                             </div>

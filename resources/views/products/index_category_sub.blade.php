@@ -54,7 +54,11 @@
                             <tbody>
                                 @foreach($sub as $s)
                                     <tr id="model_{{ $s->id }}">
-                                        <td class="user-avatar">{{ ucfirst($s->name) }}</td>
+                                        <td class="user-avatar">
+                                            <a href="{{ route('product.edit.category.sub', ['id' => $s->id]) }}" style="color: #0b0b0b;">
+                                                {{ ucfirst($s->name) }}
+                                            </a>
+                                        </td>
                                         <td>{{ $s->category_name }}</td>
                                         <td>
                                             @if($s->status)

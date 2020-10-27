@@ -169,7 +169,7 @@ class ProductController extends Controller
     {
         $data = $request->only(['name', 'code', 'brand', 'model', 'description', 'active', 'category_id', 'file']);
 
-        $sub = $request->except(['name', 'code', 'brand', 'model', 'description', 'active', 'category_id', '_method', 'file']);
+        $sub = $request->except(['name', 'code', 'brand', 'model', 'description', 'active', 'category_id', '_method', 'file', 'inactive']);
 
         if(isset($data['active']))
             $data['status'] = 1;

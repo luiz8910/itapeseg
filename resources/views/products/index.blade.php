@@ -75,7 +75,13 @@
 
                                     <td>{{ $product->category_name }}</td>
 
-                                    <td><span class="label label-success">Disponivel</span></td>
+                                    <td>
+                                        @if($product->status)
+                                            <span class="label label-success">Disponivel</span>
+                                        @else
+                                            <span class="label label-danger">Em falta</span>
+                                        @endif
+                                    </td>
 
                                     <td class="actions">
                                         <a href="{{ route('product.edit', ['id' => $product->id]) }}" class="icon">
