@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Repositories\MenuRepository;
+use App\Repositories\MenuRepositoryEloquent;
 use App\Repositories\PersonRepository;
 use App\Repositories\PersonRepositoryEloquent;
 use App\Repositories\ProductCategoryRepository;
@@ -31,6 +33,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(ProductCategoryRepository::class, ProductCategoryRepositoryEloquent::class);
         $this->app->bind(SubCategoryRepository::class, SubCategoryRepositoryEloquent::class);
         $this->app->bind(SubCatChooseRepository::class, SubCatChooseRepositoryEloquent::class);
+        $this->app->bind(MenuRepository::class, MenuRepositoryEloquent::class);
     }
 
     /**

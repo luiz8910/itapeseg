@@ -13,9 +13,7 @@
 
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'SiteController@home')->name('home');
 
 Auth::routes();
 
@@ -126,6 +124,22 @@ Route::group(['middleware' => 'auth'], function (){
 
 //----------------------------------------------------------------------------------------------------------------------
 
+    //Reordenar Menu
 
+    //View
+    Route::get('/menu', 'SiteController@reorder_menu')->name('reorder.menu');
+
+    //BD Persistence
+    Route::post('/menu', 'SiteController@reorder')->name('reorder.menu.post');
 
 });
+
+
+
+
+
+
+
+
+
+

@@ -106,9 +106,16 @@
             <nav class="container" id="main-menu">
                 <div id="mobnav-btn"><span class="icon-menu-3"></span>Menu</div>
                 <ul class="sf-menu" id="thumbs">
-                    <li>
-                        <a id="first_home"  href="#go_top"><span class="icon-home-2"></span>Inicio</a>
+                    <?php $i = 0; ?>
 
+                    @foreach($menus as $m)
+                        <li>
+                            <a @if($i == 0) id="first_home" @endif href="#{{ $m->section_id }}"><span class="{{ $m->icon }}"></span>{{ $m->name }}</a>
+                        </li>
+                        <?php $i++; ?>
+                    @endforeach
+                   {{-- <li>
+                        <a id="first_home" href="#go_initial"><span class="icon-home-2"></span>Inicio</a>
                     </li>
 
                     <li>
@@ -123,13 +130,13 @@
                     </li>
                     <li>
                         <a href="#go_contact"><span class="icon-mail"></span>Contato</a>
-                    </li>
+                    </li>--}}
                 </ul>
             </nav><!-- /main-menu -->
         </div>
     </section><!-- /.navbar-wrapper -->
 
-    <section class="col-wrap slider" id="go_top"><!-- /.promo_box -->
+    <section class="col-wrap slider" id="go_initial"><!-- /.promo_box -->
         <!--
         #################################
             - THEMEPUNCH BANNER -

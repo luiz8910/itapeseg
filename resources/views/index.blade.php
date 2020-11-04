@@ -76,7 +76,7 @@
                 <div class="left-sidebar-scroll">
                     <div class="left-sidebar-content">
                         <ul class="sidebar-elements">
-                            <li class="divider">Catalago</li>
+                            <li class="divider">Catálago</li>
                             <li class="active"><a href="{{ route('home') }}"><i class="icon mdi mdi-home"></i><span>Dashboard</span></a>
                             </li>
                             <li class="parent"><a href="javascript:"><i class="icon mdi mdi-labels"></i><span>Produtos</span></a>
@@ -113,9 +113,13 @@
 
 
                             <li class="divider">Site</li>
-                            <li class="parent"><a href="#"><i class="icon mdi mdi-inbox"></i><span>Email</span></a>
+                            <li class="parent"><a href="#"><i class="icon mdi mdi-inbox"></i><span>Seções do Site</span></a>
                                 <ul class="sub-menu">
-                                    <li><a href="email-inbox.html">Inbox</a>
+                                    <li>
+                                        <a href="{{ route('reorder.menu') }}">Reordenar Menu</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:">Banner</a>
                                     </li>
                                     <li><a href="email-read.html">Email Detail</a>
                                     </li>
@@ -123,7 +127,7 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li class="parent"><a href="#"><i class="icon mdi mdi-view-web"></i><span>Layouts</span></a>
+                            <li class="parent"><a href="#"><i class="icon mdi mdi-email"></i><span>Contato</span></a>
                                 <ul class="sub-menu">
                                     <li><a href="layouts-primary-header.html">Primary Header</a>
                                     </li>
@@ -145,7 +149,7 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li class="parent"><a href="#"><i class="icon mdi mdi-pin"></i><span>Maps</span></a>
+                            <li class="parent"><a href="#"><i class="icon mdi mdi-email-open"></i><span>Newsletter</span></a>
                                 <ul class="sub-menu">
                                     <li><a href="maps-google.html">Google Maps</a>
                                     </li>
@@ -194,11 +198,17 @@
     <script src="../../assets/lib/jqvmap/jquery.vmap.min.js" type="text/javascript"></script>
     <script src="../../assets/lib/jqvmap/maps/jquery.vmap.world.js" type="text/javascript"></script>
     <script src="../../assets/js/app-dashboard.js" type="text/javascript"></script>
+    <script src="../../assets/lib/jquery.nestable/jquery.nestable.js" type="text/javascript"></script>
+    <script src="../../assets/js/app-ui-nestable-lists.js" type="text/javascript"></script>
     <script type="text/javascript">
         $(document).ready(function() {
             //initialize the javascript
             App.init();
-            App.dashboard();
+
+            if(location.pathname.search('menu') !== -1)
+                App.uiNestableLists();
+            else
+                App.dashboard();
 
         });
     </script>
@@ -206,7 +216,6 @@
 <!------------------------------------------Form scripts--------------------------------------------------------------->
 
     <script src="../../assets/lib/jquery-ui/jquery-ui.min.js" type="text/javascript"></script>
-    <script src="../../assets/lib/jquery.nestable/jquery.nestable.js" type="text/javascript"></script>
     <script src="../../assets/lib/moment.js/min/moment.min.js" type="text/javascript"></script>
     <script src="../../assets/lib/datetimepicker/js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
     <script src="../../assets/lib/select2/js/select2.min.js" type="text/javascript"></script>
@@ -217,6 +226,7 @@
 
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="../../js/common.js"></script>
+
     @if(isset($scripts))
         @foreach($scripts as $script)
             <script src="{{ $script }}"></script>

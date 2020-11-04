@@ -5,11 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="02d0c5fd-17a2-4b06-a4ec-ff035497b744" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/d7cf5222-ee32-4b8b-8267-7e8d1b8fe91d.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/d7cf5222-ee32-4b8b-8267-7e8d1b8fe91d.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/products/form_category_sub.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products/form_category_sub.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/products/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/products/index_category_sub.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/products/index_category_sub.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/RepositoryServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/RepositoryServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +32,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/app/Http/Controllers/SiteController.php" root0="SKIP_INSPECTION" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/app/Http/Controllers/ProductController.php" root0="SKIP_INSPECTION" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/public/js/product.js" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/public/js/person.js" root0="SKIP_INSPECTION" />
@@ -220,7 +222,10 @@
       <workItem from="1603737292619" duration="3659000" />
       <workItem from="1603763141590" duration="608000" />
       <workItem from="1603820375238" duration="470000" />
-      <workItem from="1603823830909" duration="2075000" />
+      <workItem from="1603823830909" duration="2766000" />
+      <workItem from="1604071514000" duration="1232000" />
+      <workItem from="1604171093234" duration="3487000" />
+      <workItem from="1604425201102" duration="20965000" />
     </task>
     <servers />
   </component>
@@ -240,10 +245,10 @@
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state x="570" y="260" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1680.1010@0.0.1680.1010" timestamp="1603065009684" />
-    <state x="620" y="260" key="FileChooserDialogImpl" timestamp="1601066698693">
+    <state x="620" y="260" key="FileChooserDialogImpl" timestamp="1604435447852">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state x="620" y="260" key="FileChooserDialogImpl/0.0.1680.1010@0.0.1680.1010" timestamp="1601066698693" />
+    <state x="620" y="260" key="FileChooserDialogImpl/0.0.1680.1010@0.0.1680.1010" timestamp="1604435447852" />
     <state x="586" y="228" key="NewPhpClassDialog" timestamp="1602198548536">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
@@ -264,17 +269,17 @@
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state x="420" y="160" key="com.intellij.database.dbimport.ImportDialog/0.0.1680.1010@0.0.1680.1010" timestamp="1603239445171" />
-    <state x="547" y="238" width="585" height="534" key="find.popup" timestamp="1603224720487">
+    <state x="547" y="238" width="585" height="534" key="find.popup" timestamp="1604444480432">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state x="547" y="238" width="585" height="534" key="find.popup/0.0.1680.1010@0.0.1680.1010" timestamp="1603224720487" />
-    <state x="496" y="233" key="run.anything.popup" timestamp="1603739826125">
+    <state x="547" y="238" width="585" height="534" key="find.popup/0.0.1680.1010@0.0.1680.1010" timestamp="1604444480432" />
+    <state x="496" y="233" width="672" height="677" key="run.anything.popup" timestamp="1604446110576">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state x="496" y="233" key="run.anything.popup/0.0.1680.1010@0.0.1680.1010" timestamp="1603739826125" />
-    <state x="503" y="217" width="672" height="678" key="search.everywhere.popup" timestamp="1603738756416">
+    <state x="496" y="233" width="672" height="677" key="run.anything.popup/0.0.1680.1010@0.0.1680.1010" timestamp="1604446110576" />
+    <state x="503" y="217" width="672" height="678" key="search.everywhere.popup" timestamp="1604469535384">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state x="503" y="217" width="672" height="678" key="search.everywhere.popup/0.0.1680.1010@0.0.1680.1010" timestamp="1603738756416" />
+    <state x="503" y="217" width="672" height="678" key="search.everywhere.popup/0.0.1680.1010@0.0.1680.1010" timestamp="1604469535384" />
   </component>
 </project>
