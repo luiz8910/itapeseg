@@ -3,7 +3,12 @@
 namespace App\Http\Controllers;
 
 
+use App\Repositories\AboutRepository;
+use App\Repositories\BrandRepository;
+use App\Repositories\BrandSegmentRepository;
+use App\Repositories\FAQRepository;
 use App\Repositories\MenuRepository;
+use App\Repositories\SegBrandChoosesRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -13,10 +18,56 @@ class SiteController extends Controller
      * @var MenuRepository
      */
     private $menu;
+    /**
+     * @var BrandRepository
+     */
+    private $brands;
+    /**
+     * @var BrandSegmentRepository
+     */
+    private $segments;
+    /**
+     * @var SegBrandChoosesRepository
+     */
+    private $segBrand;
+    /**
+     * @var AboutRepository
+     */
+    private $abouts;
+    /**
+     * @var FAQRepository
+     */
+    private $faq;
 
-    public function __construct(MenuRepository $menu)
+    public function __construct(MenuRepository $menu, BrandRepository $brands,
+                                BrandSegmentRepository $segments, SegBrandChoosesRepository $segBrand,
+                                AboutRepository $abouts, FAQRepository $faq)
     {
         $this->menu = $menu;
+        $this->brands = $brands;
+        $this->segments = $segments;
+        $this->segBrand = $segBrand;
+        $this->abouts = $abouts;
+        $this->faq = $faq;
+    }
+
+    public function home()
+    {
+        $menus = $this->menu->orderBy('order')->all();
+
+        $brands = $this->brands->findByField('status', 1);
+
+        foreach ($brands as $brand)
+            $brand->segments = $this->segBrand->findByField('brand_id', $brand->id);
+
+
+        $segments = $this->segments->orderBy('name')->findByField('status', 1);
+
+        $about = $this->abouts->findByField('id', 1)->first();
+
+        $faq = $this->faq->orderBy('order')->findByField('active', 1);
+
+        return view('welcome', compact('menus', 'brands', 'segments', 'about', 'faq'));
     }
 
     public function reorder_menu()
@@ -58,10 +109,5 @@ class SiteController extends Controller
 
     }
 
-    public function home()
-    {
-        $menus = $this->menu->orderBy('order')->all();
 
-        return view('welcome', compact('menus'));
-    }
 }

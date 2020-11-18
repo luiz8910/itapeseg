@@ -132,6 +132,58 @@ Route::group(['middleware' => 'auth'], function (){
     //BD Persistence
     Route::post('/menu', 'SiteController@reorder')->name('reorder.menu.post');
 
+//----------------------------------------------------------------------------------------------------------------------
+
+    //Brands - Marcas exibidas no site
+
+    Route::get('/marcas/{orderBy?}/{status?}', 'BrandController@index')->name('brand.index');
+
+    Route::get('/criar_marca', 'BrandController@create')->name('brand.create');
+
+    Route::get('/editar_marca/{id}', 'BrandController@edit')->name('brand.edit');
+
+    Route::post('/brand', 'BrandController@store')->name('brand.store');
+
+    Route::put('/brand/{id}', 'BrandController@update')->name('brand.update');
+
+    Route::delete('/brand/{id}', 'BrandController@delete')->name('brand.delete');
+
+    // Brand Segments - Segmentos das marcas (Ex: CFTV, Alarmes e etc)
+
+    Route::get('/segmentos', 'BrandController@index_segment')->name('brand.index.segment');
+
+    Route::get('/criar_segmento', 'BrandController@create_segment')->name('brand.create.segment');
+
+    Route::get('/editar_segmento/{id}', 'BrandController@edit_segment')->name('brand.edit.segment');
+
+    Route::post('/segment', 'BrandController@store_segment')->name('brand.store.segment');
+
+    Route::put('/segment/{id}', 'BrandController@update_segment')->name('brand.update.segment');
+
+    Route::delete('/segment/{id}', 'BrandController@delete_segment')->name('brand.delete.segment');
+
+//----------------------------------------------------------------------------------------------------------------------
+
+    //About - Quem Somos
+
+    Route::get('/quem_somos', 'AboutController@edit')->name('about.edit');
+
+    Route::post('/quem_somos/', 'AboutController@update')->name('about.update');
+
+//----------------------------------------------------------------------------------------------------------------------
+
+    //FAQ
+    Route::get('/faq', 'FAQController@index')->name('faq.index');
+
+    Route::get('/criar_faq', 'FAQController@create')->name('faq.create');
+
+    Route::get('/faq/{id}', 'FAQController@edit')->name('faq.edit');
+
+    Route::post('/faq/{redirect?}', 'FAQController@store')->name('faq.store');
+
+    Route::put('/faq/{id}', 'FAQController@update')->name('faq.update');
+
+    Route::delete('/faq/{id}', 'FAQController@delete');
 });
 
 

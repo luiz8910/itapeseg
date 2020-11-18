@@ -2,6 +2,14 @@
 
 namespace App\Providers;
 
+use App\Repositories\AboutRepository;
+use App\Repositories\AboutRepositoryEloquent;
+use App\Repositories\BrandRepository;
+use App\Repositories\BrandRepositoryEloquent;
+use App\Repositories\BrandSegmentRepository;
+use App\Repositories\BrandSegmentRepositoryEloquent;
+use App\Repositories\FAQRepository;
+use App\Repositories\FAQRepositoryEloquent;
 use App\Repositories\MenuRepository;
 use App\Repositories\MenuRepositoryEloquent;
 use App\Repositories\PersonRepository;
@@ -10,6 +18,8 @@ use App\Repositories\ProductCategoryRepository;
 use App\Repositories\ProductCategoryRepositoryEloquent;
 use App\Repositories\ProductRepository;
 use App\Repositories\ProductRepositoryEloquent;
+use App\Repositories\SegBrandChoosesRepository;
+use App\Repositories\SegBrandChoosesRepositoryEloquent;
 use App\Repositories\SubCatChooseRepository;
 use App\Repositories\SubCatChooseRepositoryEloquent;
 use App\Repositories\SubCategoryRepository;
@@ -34,6 +44,11 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(SubCategoryRepository::class, SubCategoryRepositoryEloquent::class);
         $this->app->bind(SubCatChooseRepository::class, SubCatChooseRepositoryEloquent::class);
         $this->app->bind(MenuRepository::class, MenuRepositoryEloquent::class);
+        $this->app->bind(BrandRepository::class, BrandRepositoryEloquent::class);
+        $this->app->bind(BrandSegmentRepository::class, BrandSegmentRepositoryEloquent::class);
+        $this->app->bind(SegBrandChoosesRepository::class, SegBrandChoosesRepositoryEloquent::class);
+        $this->app->bind(AboutRepository::class, AboutRepositoryEloquent::class);
+        $this->app->bind(FAQRepository::class, FAQRepositoryEloquent::class);
     }
 
     /**

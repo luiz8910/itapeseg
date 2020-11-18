@@ -13,7 +13,26 @@ $(function (){
 
     });
 
-})
+    $("#file").change(function (){
+        preview_file($(this));
+    });
+
+    //Used to limit user typing to numbers
+    //Limita o usuário a digitar apenas números
+    $(".number").keypress(function (e) {
+        if (e.which < 48 || e.which > 57)
+            return false;
+
+    });
+
+    fix_brand_bug();
+
+});
+
+function fix_brand_bug()
+{
+    $("#all").trigger('click');
+}
 
 function sweet_alert_error($msg, $timer) {
     var msg = $msg ? $msg : 'Um erro desconhecido ocorreu, tente novamente mais tarde';
@@ -106,4 +125,27 @@ function sweet_alert($data, $ajax) {
     });
 
 
+}
+
+function preview_file(input)
+{
+    var file = $("input[type=file]").get(0).files[0];
+
+    if(file){
+        var reader = new FileReader();
+
+        reader.onload = function(){
+            $("#preview_img").attr("src", reader.result).css('display', 'block');
+            $("#upload").text('Trocar Imagem');
+            console.log($("#upload"));
+        }
+
+        reader.readAsDataURL(file);
+    }
+}
+
+function upload_view()
+{
+    event.preventDefault();
+    $("#file").trigger('click');
 }

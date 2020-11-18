@@ -484,9 +484,13 @@
                 <div class="span12 content_pt first portfolio_filter_category">
                     <div class="filter_category">
                         <ul class="option-set" id="filter">
-                            <li><a href="#" data-filter="*" class="active">Todos</a></li>
+                            <li><a href="#" data-filter="*" class="active" id="all">Todos</a></li>
 
-                            <li><a href="#" data-filter=".seg">Segurança Eletrônica</a></li>
+                            @foreach($segments as $seg)
+                                <li><a href="#" data-filter=".{{ $seg->id }}">{{ $seg->name }}</a></li>
+                            @endforeach
+
+                            {{--<li><a href="#" data-filter=".seg">Segurança Eletrônica</a></li>
 
                             <li><a href="#" data-filter=".cabos">Cabeamento</a></li>
 
@@ -494,7 +498,7 @@
 
                             <li><a href="#" data-filter=".fontes">Fontes | Nobreaks</a></li>
 
-                            <li><a href="#" data-filter=".acessorios">Acessórios</a></li>
+                            <li><a href="#" data-filter=".acessorios">Acessórios</a></li>--}}
                         </ul>
                     </div>
                 </div>
@@ -508,16 +512,23 @@
                 <div class="span12 first mb">
                     <ul class="span12 first pro gallery portfolio_item content_pt">
 
-                        <li class="portfolio mb seg">
-                            <div class="portfolio-mask">
-                                <div class="portfolio-link">
-                                    <a href="#"><span class="icon-hand icon-left"></span></a>
-                                    <a href="https://www.gigasecurity.com.br/" target="_blank"><h1>Giga Security</h1></a>
+                        @foreach($brands as $brand)
+                            <li class="portfolio mb
+                                @foreach($brand->segments as $seg)
+                                    {{ $seg->segment_id }}
+                                @endforeach
+                               ">
+                                <div class="portfolio-mask">
+                                    <div class="portfolio-link">
+                                        <a href="#"><span class="icon-hand icon-left"></span></a>
+                                        <a href="javascript:" target="_blank"><h1>{{ $brand->name }}</h1></a>
+                                    </div>
+
+                                    <img src="@if($brand->picture){{ str_replace('public', '/storage', $brand->picture) }} @else ../../noimage.png @endif" alt="image" title="{{ $brand->name }}"/>
                                 </div>
-                                <img src="http://itapesegdistribuidora.com.br/images/marcas/giga.png" alt="image" title="Giga Security"/>
-                            </div>
-                        </li>
-                        <li class="portfolio mb seg">
+                            </li>
+                        @endforeach
+                        {{--<li class="portfolio mb seg">
                             <div class="portfolio-mask">
                                 <div class="portfolio-link">
                                     <a href="#"><span class="icon-link icon-left"></span></a>
@@ -642,7 +653,7 @@
                                 </div>
                                 <img src="http://itapesegdistribuidora.com.br/images/marcas/ilumi.png" alt="image" title="Ilumi Materiais Elétricos"/>
                             </div>
-                        </li>
+                        </li>--}}
                     </ul>
                 </div>
 
@@ -686,17 +697,13 @@
                     <div class="tabs">
                         <div id="tabs-1" class="inner-tab1 content_pt">
                             <div class="tab_image">
-                                <a href="#"><img src="http://itapesegdistribuidora.com.br/images/00_02.png" class="mb" alt=""></a>
+                                <a href="#"><img src="{{ str_replace('public', '/storage', $about->picture) }}" class="mb" alt=""></a>
                             </div>
                             <div class="tab_content">
                                 <div class="content_heading">
-                                    <h1>Itapeseg Distribuidora</h1>
+                                    <h1>{{ $about->title }}</h1>
                                 </div>
-                                <p style="text-align: justify;">
-                                    A Itapeseg Distribuidora iniciou suas atividades no dia 08/08/2012 na cidade de Itapetininga-SP, como intuito de atender as revendas locais fornecendo materiais de Segurança Eletrônica, Automação e Telecomunicações.<br/>
-                                    Em nosso portfólio contamos com a linha completa de produtos de SEGURANÇA ELETRONICA, AUTOMAÇÃO E TELECOMUNICAÇÕES.<br/>
-                                    Trabalhando incansavelmente durante anos para conquistar o reconhecimento dentro de um mercado tão exigente. Nossas metas sempre foram claras: buscar um atendimento adequado, um pós-venda diferenciado e fornecedores confiáveis para o atendimento desse segmento.<br/>
-                                    A ITAPESEG conta com loja física e centro de distribuição localizada na área central da cidade de ITAPETININGA/SP, enviando produtos para todo Brasil.</p>
+                                <p style="text-align: justify"><?php echo html_entity_decode($about->about, ENT_QUOTES, 'UTF-8') ?></p>
                             </div>
                         </div>
                         <div class="clear"></div>
@@ -708,9 +715,7 @@
                         <div class="accordion first_accordion">
                             <h3>Nossa Missão</h3>
                             <div class="accordion_content">
-                                <p style="text-align: justify;">
-                                    Distribuir equipamentos de Segurança Eletrônica, Automação e Telecomunicações de maneira eficiente, com bom atendimento e pós-venda satisfatório, buscando sempre as melhores práticas de mercado.
-                                </p>
+                                <p style="text-align: justify"><?php echo html_entity_decode($about->our_mission, ENT_QUOTES, 'UTF-8') ?></p>
                             </div>
                         </div>
                     </div>
@@ -755,26 +760,25 @@
         <div class="container">
             <div class="row-fluid content_pt content_pb">
                 <div class="span12 main_heading content_pt content_pb themeapt_animated_text themeapt_text  themeapt_animate_when_almost_visible bottom-to-top">
-                    <h1>Faq</h1>
+                    <h1>faq</h1>
                     <div class="clear"></div>
                 </div>
 
                 <div class="span12 first">
-                    <div class="span6 mb content_pt themeapt_animated_text themeapt_text  themeapt_animate_when_almost_visible right-to-left">
+
+                    <div class="span12 mb content_pt themeapt_animated_text themeapt_text  themeapt_animate_when_almost_visible right-to-left">
                         <div class="span12 mini_border mb">
-                            <div class="accordion first_accordion">
-                                <h3>CADASTRO</h3>
-                                <div class="accordion_content">
-                                    <p style="text-align: justify;">
-                                        Para fazer cadastro conosco mande-nos um email para contato@itapesegdistribuidora.com.br com os seguintes documentos:<br/>
-                                        • Cartão CNPJ<br/>
-                                        • Ficha Cadastral<br/>
-                                        • Comprovante de Endereço<br/>
-
-                                    </p>
-                                </div>
-
-                                <h3>TROCAS, DEVOLUÇÕES E ASSISTÊNCIA TÉCNICA</h3>
+                            <?php $i = 0; ?>
+                            <div class="accordion @if($i == 0) first_accordion @endif">
+                                @foreach($faq as $f)
+                                    <h3>{{ $f->question }}</h3>
+                                    <div class="accordion_content">
+                                        <p style="text-align: justify;">
+                                            <?php echo html_entity_decode($f->answer, ENT_QUOTES, 'UTF-8'); ?>
+                                        </p>
+                                    </div>
+                                @endforeach
+                                {{--<h3>TROCAS, DEVOLUÇÕES E ASSISTÊNCIA TÉCNICA</h3>
                                 <div class="accordion_content">
                                     <p style="text-align: justify;">
                                         Toda ocorrência de troca, devolução ou garantia/assistência deve ser comunicada imediatamente à nossa Central de Suporte ao Cliente, por um de nossos canais de contato:<br/>
@@ -785,12 +789,13 @@
                                         • Motivo da ocorrência.<br/>
                                         Nunca envie nada à Itapeseg Distribuidora sem comunicação prévia.<br/>
                                     </p>
-                                </div>
+                                </div>--}}
                             </div>
                         </div>
                     </div>
 
-                    <div class="span6 mb content_pt themeapt_animated_text themeapt_text  themeapt_animate_when_almost_visible right-to-left">
+
+                    {{--<div class="span6 mb content_pt themeapt_animated_text themeapt_text  themeapt_animate_when_almost_visible right-to-left">
                         <div class="span12 mini_border mb">
                             <div class="accordion first_accordion">
                                 <h3>POLÍTICA DE TROCA E DEVOLUÇÃO</h3>
@@ -824,7 +829,7 @@
 
                             </div>
                         </div>
-                    </div>
+                    </div>--}}
                 </div>
             </div><!-- /.row-fluid -->
         </div><!--Container-->
@@ -952,6 +957,7 @@
 
 <footer>
 
+{{--
     <section class="col-wrap footer_bg content_pb content_pt">
         <div class="container">
             <div class="row-fluid content_pt content_pb">
@@ -1007,6 +1013,7 @@
             </div><!-- /.row-fluid -->
         </div><!--Container-->
     </section><!-- /.col -->
+--}}
 
     <section class="col-wrap content_pb content_pt">
         <div class="container">
@@ -1079,6 +1086,8 @@
 
 <!--Custom JS-->
 <script type="text/javascript" src="js/jquery.custom.js"></script>
+
+<script type="text/javascript" src="../../js/common.js"></script>
 
 </body> <!--END BODY-->
 </html> <!--END HTML-->

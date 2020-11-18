@@ -1,15 +1,23 @@
 var App = (function () {
-	'use strict';
+    'use strict';
 
-  App.textEditors = function( ){
+    App.textEditors = function () {
 
-    //Summernote
-    $('#editor1').summernote({
-      height: 300
-    });
-    
-    $("#editor2").markdown({buttonSize: 'normal'});
-  };
+        //Summernote
+        $('#about').summernote({
+            height: 300
+        });
 
-  return App;
+        $('#our_mission').summernote({
+            height: 100
+        });
+
+        $('#answer').summernote({
+            height: 300
+        });
+
+        //$("#editor2").markdown({buttonSize: 'normal'});
+    };
+
+    return App;
 })(App || {});

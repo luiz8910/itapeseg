@@ -113,6 +113,38 @@
 
 
                             <li class="divider">Site</li>
+                            <li class="parent">
+                                <a href="#">
+                                    <i class="icon mdi mdi-accounts-list-alt"></i>
+                                    <span>Parceiros</span>
+                                </a>
+                                <ul class="sub-menu">
+                                    <li>
+                                        <a href="{{ route('brand.create.segment') }}">Novo Segmento</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('brand.index.segment') }}">Listar Segmentos</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('brand.create') }}">Nova Marca</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('brand.index') }}">Listar Marcas</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="sub-menu">
+                                <a href="{{ route('about.edit') }}">
+                                    <i class="icon mdi mdi-library"></i>
+                                    <span>Quem Somos</span>
+                                </a>
+                            </li>
+                            <li class="sub-menu">
+                                <a href="{{ route('faq.index') }}">
+                                    <i class="icon mdi mdi-book"></i>
+                                    <span>FAQ</span>
+                                </a>
+                            </li>
                             <li class="parent"><a href="#"><i class="icon mdi mdi-inbox"></i><span>Seções do Site</span></a>
                                 <ul class="sub-menu">
                                     <li>
@@ -207,6 +239,8 @@
 
             if(location.pathname.search('menu') !== -1)
                 App.uiNestableLists();
+            else if(location.pathname.search('quem_somos') !== -1 || location.pathname.search('faq') !== -1)
+                App.textEditors();
             else
                 App.dashboard();
 
