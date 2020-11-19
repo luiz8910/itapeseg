@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Mail\Contact;
+use App\Mail\Newsletter;
 use App\Repositories\CompanyDataRepository;
 use App\Repositories\ContactRepository;
+use App\Repositories\NewsletterRepository;
 use App\Repositories\UserRepository;
 use App\Traits\Config;
 use Illuminate\Http\Request;
@@ -26,17 +28,23 @@ class ContactController extends Controller
      * @var CompanyDataRepository
      */
     private $data;
+    /**
+     * @var NewsletterRepository
+     */
+    private $newsletter;
 
-    public function __construct(ContactRepository $repository, UserRepository $users, CompanyDataRepository $data)
+    public function __construct(ContactRepository $repository, UserRepository $users, CompanyDataRepository $data,
+                                NewsletterRepository $newsletter)
     {
         $this->repository = $repository;
         $this->users = $users;
         $this->data = $data;
+        $this->newsletter = $newsletter;
     }
 
     public function index()
     {
-        $contacts = $this->repository->orderBy('created_at')->paginate(10);
+        $contacts = $this->repository->orderBy('created_at', 'desc')->paginate(10);
 
         $route = 'contact.index';
 
@@ -59,9 +67,9 @@ class ContactController extends Controller
             else
                 $data['raw_phone'] = $this->raw_phone($data['phone']);
 
-            $user = $this->users->findByField('id', 1)->first();
+            $email = $this->data->findByField('id', 1)->first()->email;
 
-            Mail::to($user)->cc('luiz.sanches8910@gmail.com')->send(new Contact($data));
+            Mail::to($email)->cc('luiz.sanches8910@gmail.com')->send(new Contact($data));
 
             DB::commit();
 
@@ -121,5 +129,46 @@ class ContactController extends Controller
         }
 
         return redirect()->back();
+    }
+
+    public function newsletters()
+    {
+        $news = $this->newsletter->orderBy('created_at', 'desc')->all();
+
+        $route = 'contact.newsletter';
+
+        return view('index', compact('route', 'news'));
+    }
+
+    public function newsletter_store(Request $request)
+    {
+        $data = $request->all();
+
+        if($data['name'] == "")
+            return json_encode(['status' => false, 'msg' => 'Preencha o campo nome']);
+
+        if($data['email'] == "")
+            return json_encode(['status' => false, 'msg' => 'Preencha o campo email']);
+
+        DB::beginTransaction();
+
+        try{
+
+            $this->newsletter->create($data);
+
+            $email = $this->data->findByField('id', 1)->first()->email;
+
+            Mail::to($email)->cc('luiz.sanches8910@gmail.com')->send(new Newsletter($data));
+
+            DB::commit();
+
+            return json_encode(['status' => true]);
+
+        }catch (\Exception $e)
+        {
+            DB::rollBack();
+
+            return json_encode(['status' => false, 'msg' => 'Um erro ocorreu, tente novamente mais tarde']);
+        }
     }
 }

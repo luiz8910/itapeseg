@@ -138,7 +138,7 @@
             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
                 <tr>
                     <td align="left" bgcolor="#ffffff" style="padding: 36px 24px 0; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; border-top: 3px solid #d4dadf;">
-                        <h1 style="margin: 0; font-size: 32px; font-weight: 700; letter-spacing: -1px; line-height: 48px;">Você recebeu uma mensagem vinda do site.</h1>
+                        <h1 style="margin: 0; font-size: 32px; font-weight: 700; letter-spacing: -1px; line-height: 48px;">Você recebeu um novo contato da newsletter.</h1>
                     </td>
                 </tr>
             </table>
@@ -158,15 +158,6 @@
                     <td align="left" bgcolor="#ffffff" style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
                         <p style="margin: 0;">Nome: {{ $data['name'] }}</p><br>
                         <p style="margin: 0;">Email: <a href="mailto:{{ $data['email'] }}">{{ $data['email'] }}</a></p><br>
-                        <p style="margin: 0;">Telefone: @if($data['phone'])<a href="https://api.whatsapp.com/send?phone=55{{ $data['raw_phone'] }}">{{ $data['phone'] }}(Clique para abrir o WhatsApp)@else Telefone não informado @endif</a></p><br>
-                        <p style="margin: 0;">Mensagem:
-                            Curabitur aliquet quam id dui posuere blandit. Vivamus suscipit tortor eget felis porttitor volutpat.
-                            Donec sollicitudin molestie malesuada. Quisque velit nisi, pretium ut lacinia in, elementum id enim.
-                            Nulla porttitor accumsan tincidunt. Pellentesque in ipsum id orci porta dapibus.
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                            Curabitur aliquet quam id dui posuere blandit.
-                            Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui.
-                            Pellentesque in ipsum id orci porta dapibus.</p>
                     </td>
                 </tr>
                 <!-- end copy -->

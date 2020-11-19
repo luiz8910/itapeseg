@@ -682,15 +682,16 @@
                         <div class="content_heading subscribe_heading content_pt">
                             <h1>Newsletter</h1>
                         </div>
-                        <p>Se inscreva para receber nossas promoções.</p>
-                        <form method="Post">
-                            <input type="text" onfocus="if (this.value == 'Your Name'){this.value = '';}" onblur="if (this.value == ''){this.value = 'Your Name';}" name="subscrib" class="subscrib_input" value="Seu Nome">
+                        <p>Inscreva-se para receber nossas promoções.</p>
 
-                            <input type="text" onfocus="if (this.value == 'Your Email'){this.value = '';}" onblur="if (this.value == ''){this.value = 'Your Email';}" name="subscrib" class="subscrib_input" value="Seu Email">
+                        <input type="text" id="newsletter_name" class="subscrib_input" placeholder="Digite seu nome">
+
+                        <input type="text" id="newsletter_email" class="subscrib_input" placeholder="Digite seu email">
+
+                        <input type="submit" onclick="send_newsletter()" id="btn_submit_newsletter" class="purchase subscrib" value="Enviar">
+                        <img src="../../loading.gif" style="width: 100px; height: 150px; display:none;" id="loading_gif">
 
 
-                            <input type="submit" onclick="alert('confirmar o envio'); return false;" class="purchase subscrib" value="Enviar">
-                        </form>
                     </div>
                 </div>
             </div><!-- /.row-fluid -->
@@ -950,7 +951,6 @@
 
                 <div class="social_icon2">
                     <ul>
-
                         <li>
                             <a class="normalTip facebook" target="_blank" href="{{ $data->messenger }}" title="Messenger">
                                 <img src="../../messenger_icon.png" alt="Messenger" style="width: 40px; height: 40px; margin-top: -3px;">

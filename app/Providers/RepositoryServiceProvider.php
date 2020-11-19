@@ -16,6 +16,8 @@ use App\Repositories\FAQRepository;
 use App\Repositories\FAQRepositoryEloquent;
 use App\Repositories\MenuRepository;
 use App\Repositories\MenuRepositoryEloquent;
+use App\Repositories\NewsletterRepository;
+use App\Repositories\NewsletterRepositoryEloquent;
 use App\Repositories\PersonRepository;
 use App\Repositories\PersonRepositoryEloquent;
 use App\Repositories\ProductCategoryRepository;
@@ -55,6 +57,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(FAQRepository::class, FAQRepositoryEloquent::class);
         $this->app->bind(ContactRepository::class, ContactRepositoryEloquent::class);
         $this->app->bind(CompanyDataRepository::class, CompanyDataRepositoryEloquent::class);
+        $this->app->bind(NewsletterRepository::class, NewsletterRepositoryEloquent::class);
     }
 
     /**

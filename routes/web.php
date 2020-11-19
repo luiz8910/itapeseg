@@ -195,6 +195,14 @@ Route::group(['middleware' => 'auth'], function (){
 
 //----------------------------------------------------------------------------------------------------------------------
 
+    //Newsletter Form and list
+
+    Route::get('/newsletter', 'ContactController@newsletters')->name('newsletter.index');
+
+    Route::post('/newsletter', 'ContactController@newsletter_store');
+
+//----------------------------------------------------------------------------------------------------------------------
+
     //Dados da Empresa
 
     Route::get("/informacoes", 'ContactController@company_data')->name('company.data');

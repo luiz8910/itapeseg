@@ -153,7 +153,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="javascript:">
+                                        <a href="{{ route('newsletter.index') }}">
                                             Lista de Contatos - Newsletter
                                         </a>
                                     </li>
