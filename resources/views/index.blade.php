@@ -145,6 +145,26 @@
                                     <span>FAQ</span>
                                 </a>
                             </li>
+                            <li class="parent"><a href="#"><i class="icon mdi mdi-info"></i><span>Informações</span></a>
+                                <ul class="sub-menu">
+                                    <li>
+                                        <a href="{{ route('contact.index') }}">
+                                            Lista de Contatos - Formulário
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:">
+                                            Lista de Contatos - Newsletter
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('company.data') }}">
+                                            Dados da empresa
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </li>
                             <li class="parent"><a href="#"><i class="icon mdi mdi-inbox"></i><span>Seções do Site</span></a>
                                 <ul class="sub-menu">
                                     <li>
@@ -212,7 +232,6 @@
     @include($route)
 </div>
 
-
 <!------------------------------ Scripts Comuns para todas ás páginas ------------------------------------------------->
 
     <script src="../../assets/lib/jquery/jquery.min.js" type="text/javascript"></script>
@@ -239,7 +258,7 @@
 
             if(location.pathname.search('menu') !== -1)
                 App.uiNestableLists();
-            else if(location.pathname.search('quem_somos') !== -1 || location.pathname.search('faq') !== -1)
+            else if(location.pathname.search('quem_somos') !== -1 || location.pathname.search('faq') !== -1 || location.pathname.search('informacoes') !== -1)
                 App.textEditors();
             else
                 App.dashboard();

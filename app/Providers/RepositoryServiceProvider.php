@@ -8,6 +8,8 @@ use App\Repositories\BrandRepository;
 use App\Repositories\BrandRepositoryEloquent;
 use App\Repositories\BrandSegmentRepository;
 use App\Repositories\BrandSegmentRepositoryEloquent;
+use App\Repositories\CompanyDataRepository;
+use App\Repositories\CompanyDataRepositoryEloquent;
 use App\Repositories\ContactRepository;
 use App\Repositories\ContactRepositoryEloquent;
 use App\Repositories\FAQRepository;
@@ -52,6 +54,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(AboutRepository::class, AboutRepositoryEloquent::class);
         $this->app->bind(FAQRepository::class, FAQRepositoryEloquent::class);
         $this->app->bind(ContactRepository::class, ContactRepositoryEloquent::class);
+        $this->app->bind(CompanyDataRepository::class, CompanyDataRepositoryEloquent::class);
     }
 
     /**

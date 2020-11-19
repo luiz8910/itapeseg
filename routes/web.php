@@ -192,6 +192,14 @@ Route::group(['middleware' => 'auth'], function (){
     Route::get('/contatos', 'ContactController@index')->name('contact.index');
 
     Route::post('/contact', 'ContactController@store')->name('contact.store');
+
+//----------------------------------------------------------------------------------------------------------------------
+
+    //Dados da Empresa
+
+    Route::get("/informacoes", 'ContactController@company_data')->name('company.data');
+
+    Route::post("/informacoes", 'ContactController@company_data_update')->name('company.data.update');
 });
 
 

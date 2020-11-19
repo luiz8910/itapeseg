@@ -919,14 +919,11 @@
             <div class="span6 our_location content_pt themeapt_animated_text themeapt_text  themeapt_animate_when_almost_visible right-to-left copyright_text">
                 <h1>Horario de Funcionamento</h1><br/>
                 <p>
-                    Segunda a Sexta: 8h30 até 18h00
-                    <br/>
-                    Sabado: 8h00 até 12h00
+                    <?php echo html_entity_decode($data->opening_hours, ENT_QUOTES, 'UTF-8'); ?>
+
                 </p>
                 <p>
-                    Rua: Prof. Francisco Valio - 579<br/>
-                    Centro - Itapetininga - SP<br/>
-                    Cep: 18.200-320
+                    <?php echo html_entity_decode($data->address, ENT_QUOTES, 'UTF-8'); ?>
                 </p>
                 <br/>
 

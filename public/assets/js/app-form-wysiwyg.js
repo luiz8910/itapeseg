@@ -16,6 +16,14 @@ var App = (function () {
             height: 300
         });
 
+        $('#opening_hours').summernote({
+            height: 200
+        });
+
+        $('#address').summernote({
+            height: 200
+        });
+
         //$("#editor2").markdown({buttonSize: 'normal'});
     };
 
