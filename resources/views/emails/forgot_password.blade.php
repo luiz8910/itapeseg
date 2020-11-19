@@ -170,7 +170,7 @@
                                     <table border="0" cellpadding="0" cellspacing="0">
                                         <tr>
                                             <td align="center" bgcolor="#1a82e2" style="border-radius: 6px;">
-                                                <a href="http://localhost:8000/nova_senha/{{ $token }}" target="_blank" style="display: inline-block; padding: 16px 36px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; color: #ffffff; text-decoration: none; border-radius: 6px;">
+                                                <a href="{{ $url }}/nova_senha/{{ $token }}" target="_blank" style="display: inline-block; padding: 16px 36px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; color: #ffffff; text-decoration: none; border-radius: 6px;">
                                                     Recupere sua senha
                                                 </a>
                                             </td>
@@ -187,7 +187,7 @@
                 <tr>
                     <td align="left" bgcolor="#ffffff" style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
                         <p style="margin: 0;">Se o botão não funcionar, copie e cole o link abaixo no seu navegador</p>
-                        <p style="margin: 0;"><a href="#" target="_blank">http://localhost:8000/nova_senha/{{ $token }}</a></p>
+                        <p style="margin: 0;"><a href="#" target="_blank">{{ $url }}/nova_senha/{{ $token }}</a></p>
                     </td>
                 </tr>
                 <!-- end copy -->
@@ -195,7 +195,7 @@
                 <!-- start copy -->
                 <tr>
                     <td align="left" bgcolor="#ffffff" style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px; border-bottom: 3px solid #d4dadf">
-                        <p style="margin: 0;">Atenciosamente.<br> Suporte Mecanise</p>
+                        <p style="margin: 0;">Atenciosamente.<br> Suporte Itapeseg</p>
                     </td>
                 </tr>
                 <!-- end copy -->

@@ -7,22 +7,20 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class ForgotPassword extends Mailable
+class Contact extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $token;
-    public $url;
+    public $data;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($token)
+    public function __construct($data)
     {
-        $this->url = env('APP_URL');
-        $this->token = $token;
+        $this->data = $data;
     }
 
     /**
@@ -33,8 +31,8 @@ class ForgotPassword extends Mailable
     public function build()
     {
         return $this
-            ->subject('Recuperação de senha')
+            ->subject('Contato do Site')
             ->from('contato@itapesegdistribuidora.com.br')
-            ->view('emails.forgot_password');
+            ->view('emails.contact');
     }
 }

@@ -4,7 +4,7 @@
 
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Novo Usuário Mecanise</title>
+    <title>Novo Usuário Itapeseg</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style type="text/css">
         /**
@@ -106,7 +106,7 @@
 
 <!-- start preheader -->
 <div class="preheader" style="display: none; max-width: 0; max-height: 0; overflow: hidden; font-size: 1px; line-height: 1px; color: #fff; opacity: 0;">
-    Você acaba de ser cadastrado no site mecanise.com.br
+    Você acaba de ser cadastrado no site itapesegdistribuidora.com.br
 </div>
 <!-- end preheader -->
 
@@ -138,7 +138,7 @@
             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
                 <tr>
                     <td align="left" bgcolor="#ffffff" style="padding: 36px 24px 0; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; border-top: 3px solid #d4dadf;">
-                        <h1 style="margin: 0; font-size: 32px; font-weight: 700; letter-spacing: -1px; line-height: 48px;">Olá {{ $name }}, sua conta mecanise foi criada.</h1>
+                        <h1 style="margin: 0; font-size: 32px; font-weight: 700; letter-spacing: -1px; line-height: 48px;">Olá {{ $name }}, sua conta itapeseg foi criada.</h1>
                     </td>
                 </tr>
             </table>
@@ -198,7 +198,7 @@
                 <!-- start copy -->
                 <tr>
                     <td align="left" bgcolor="#ffffff" style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px; border-bottom: 3px solid #d4dadf">
-                        <p style="margin: 0;">Atenciosamente.<br> Suporte Mecanise</p>
+                        <p style="margin: 0;">Atenciosamente.<br> Suporte Itapeseg</p>
                     </td>
                 </tr>
                 <!-- end copy -->

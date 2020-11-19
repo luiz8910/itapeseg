@@ -33,4 +33,13 @@ trait Config
         }
         return implode($pass); //turn the array into a string
     }
+
+    public function raw_phone($phone)
+    {
+        $phone = str_replace("(", '', $phone);
+        $phone = str_replace(")", '', $phone);
+        $phone = str_replace("-", '', $phone);
+
+        return trim($phone);
+    }
 }

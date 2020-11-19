@@ -28,9 +28,8 @@ Route::get('/nova_senha/{token}', 'Auth\LoginController@new_password_view')->nam
 
 Route::post('/nova_senha/{token}', 'Auth\LoginController@new_password')->name('new.password');
 
-
 Route::get('teste_email', function (){
-    return new App\Mail\ForgotPassword();
+    return new App\Mail\Contact();
 });
 
 //Catálogo
@@ -173,6 +172,7 @@ Route::group(['middleware' => 'auth'], function (){
 //----------------------------------------------------------------------------------------------------------------------
 
     //FAQ
+
     Route::get('/faq', 'FAQController@index')->name('faq.index');
 
     Route::get('/criar_faq', 'FAQController@create')->name('faq.create');
@@ -184,6 +184,14 @@ Route::group(['middleware' => 'auth'], function (){
     Route::put('/faq/{id}', 'FAQController@update')->name('faq.update');
 
     Route::delete('/faq/{id}', 'FAQController@delete');
+
+//----------------------------------------------------------------------------------------------------------------------
+
+    //Contact Form
+
+    Route::get('/contatos', 'ContactController@index')->name('contact.index');
+
+    Route::post('/contact', 'ContactController@store')->name('contact.store');
 });
 
 

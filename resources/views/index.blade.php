@@ -256,9 +256,12 @@
     <script src="../../assets/lib/bootstrap-slider/js/bootstrap-slider.js" type="text/javascript"></script>
     <script src="../../assets/js/app-form-elements.js" type="text/javascript"></script>
 
+
+
 <!-----------------------------------------Custom Scripts-------------------------------------------------------------->
 
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src='//igorescobar.github.io/jQuery-Mask-Plugin/js/jquery.mask.min.js'></script>
     <script src="../../js/common.js"></script>
 
     @if(isset($scripts))

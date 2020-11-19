@@ -892,22 +892,27 @@
             </div>
             <div class="span6 first content_pt themeapt_animated_text themeapt_text  themeapt_animate_when_almost_visible left-to-right">
                 <div class="contactform">
-                    <form action="#" method="post" id="contactfrm">
-                        <input type="text" value="Nome" id="contact_name" name="contact_name" onblur="if (this.value == ''){this.value = 'Nome';}" onfocus="if (this.value == 'Nome'){this.value = '';}"   />
 
+                    <label for="name" class="lbl" id="lbl_name" style="color:red; display: none;">Preencha este campo</label>
+                    <input type="text" class="input_contact" id="name" name="name" placeholder="Digite seu nome" required/>
 
-                        <input type="text" value="Email" id="contact_email" name="contact_email" onblur="if (this.value == ''){this.value = 'Email';}" onfocus="if (this.value == 'Email'){this.value = '';}"   />
+                    <label for="email" class="lbl" id="lbl_email" style="color:red; display: none;">Preencha este campo</label>
+                    <input type="text" class="input_contact" id="email" name="email" placeholder="Digite seu email" required/>
 
+                    <label for="phone" class="lbl" id="lbl_phone" style="color:red; display: none;">Preencha este campo</label>
+                    <input type="text" class="input_contact phone" id="phone" name="phone" placeholder="Digite seu telefone" />
 
-                        <input type="text" value="Assunto" id="contact_web" name="contact_web" onblur="if (this.value == ''){this.value = 'Assunto';}" onfocus="if (this.value == 'Assunto'){this.value = '';}"   />
+                    <label for="message" class="lbl" id="lbl_message" style="color:red; display: none;">Preencha este campo</label>
+                    <textarea name="message" id="message" required class="input_contact"
+                              onblur="if(this.value=='')this.value=this.defaultValue;" onfocus="if(this.value==this.defaultValue)this.value='';">Mensagem</textarea>
 
+                    <div class="notifications" id="contact_form_message_box" style="display:none;">
+                        <img src="../../loading.gif" style="width: 100px; height: 150px;">
+                        <span>Estamos enviando sua mensagem...</span>
+                    </div>
 
-                        <textarea onblur="if(this.value=='')this.value=this.defaultValue;" onfocus="if(this.value==this.defaultValue)this.value='';" name="contact_message" id="contact_message">Mensagem</textarea>
+                    <input type="submit" value="Enviar" class="rd-button contact_submit submit_button" id="btn_submit" />
 
-                        <input type="submit" value="Enviar" class="rd-button contact_submit submit_button" />
-
-                        <div class="notifications" id="contact_form_message_box"></div>
-                    </form>
                 </div>
             </div>
 
@@ -1088,6 +1093,31 @@
 <script type="text/javascript" src="js/jquery.custom.js"></script>
 
 <script type="text/javascript" src="../../js/common.js"></script>
+
+
+<script type='text/javascript' src='//igorescobar.github.io/jQuery-Mask-Plugin/js/jquery.mask.min.js'></script>
+
+<script type="text/javascript" src="../../js/mask.js"></script>
+<script type="text/javascript" src="../../js/contact.js"></script>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<!-----------------------------------------Custom Alerts--------------------------------------------------------------->
+
+@if(Session::has('success.msg'))
+    <script>
+        $(function (){
+            sweet_alert_success('{!! Session::get('success.msg') !!}')
+        });
+    </script>
+
+@elseif(Session::has('error.msg'))
+    <script>
+        $(function (){
+            sweet_alert_error('{!! Session::get('error.msg') !!}')
+        });
+    </script>
+@endif
 
 </body> <!--END BODY-->
 </html> <!--END HTML-->
