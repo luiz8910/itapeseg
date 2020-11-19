@@ -63,6 +63,8 @@
     <!-- SLIDER REVOLUTION 4.x CSS SETTINGS -->
     <link rel="stylesheet" type="text/css" href="css/settings.css" media="screen"/>
 
+    <link rel="stylesheet" href="../../css/common.css">
+
 
 
 </head>
@@ -80,19 +82,29 @@
             <div class="social_icon">
                 <ul>
                     <li>
-                        <a class="icon-ju-facebook normalTip" href="https://www.facebook.com/itapesegDistribuidora" target="_blank" title="Facebook"></a>
+                        <a class="normalTip" href="{{ $data->facebook }}" target="_blank" title="Facebook">
+                            <img src="../../fb_icon.png" alt="Facebook" class="social_media_icon">
+                        </a>
                     </li>
                     <li>
-                        <a class="icon-ju-messenger normalTip facebook" target="_blank" href="http://www.m.me/itapesegDistribuidora" title="Messenger"></a>
+                        <a class="normalTip facebook" target="_blank" href="{{ $data->messenger }}" title="Messenger">
+                            <img src="../../messenger_icon.png" alt="Messenger" style="width: 35px; height: 33px;">
+                        </a>
                     </li>
                     <li>
-                        <a class="icon-ju-instagram1 normalTip gplus" target="_blank" href="https://www.instagram.com/itapesegdistribuidora/" title="Instagram"></a>
+                        <a class="normalTip gplus" target="_blank" href="{{ $data->instagram }}" title="Instagram">
+                            <img src="../../insta_icon.png" alt="Instagram" class="social_media_icon">
+                        </a>
                     </li>
                     <li>
-                        <a class="icon-ju-skype normalTip gplus" target="_blank" href="https://join.skype.com/invite/AoIn72qv3F12" title="Skype"></a>
+                        <a class="normalTip gplus" target="_blank" href="{{ $data->skype }}" title="Skype">
+                            <img src="../../skype_icon.png" alt="Skype" class="social_media_icon">
+                        </a>
                     </li>
                     <li>
-                        <a class="icon-ju-whatsapp normalTip gplus" target="_blank" href="https://api.whatsapp.com/send?phone=551532722768" title="Whatsapp"></a>
+                        <a class="normalTip gplus" target="_blank" href="https://api.whatsapp.com/send?phone={{ $data->whatsapp }}" title="Whatsapp">
+                            <img src="../../whatsapp_icon.png" alt="Whatsapp" class="social_media_icon">
+                        </a>
                     </li>
                     <!--<li>
                         <a class="icon-ju-youtube normalTip gplus" href="#" title="Google Plus"></a>
@@ -732,22 +744,29 @@
                     <div class="get_social_content">
                         <ul>
                             <li>
-                                <a class="icon-ju-facebook normalTip" href="https://www.facebook.com/itapesegDistribuidora" target="_blank" title="Facebook"></a>
+                                <a class="normalTip" href="{{ $data->facebook }}" target="_blank" title="Facebook">
+                                    <img src="../../fb_icon.png" alt="Facebook" class="social_media_icon">
+                                </a>
                             </li>
                             <li>
-                                <a class="icon-ju-messenger normalTip facebook" target="_blank" href="http://www.m.me/itapesegDistribuidora" title="Messenger"></a>
+                                <a class="normalTip facebook" target="_blank" href="{{ $data->messenger }}" title="Messenger">
+                                    <img src="../../messenger_icon.png" alt="Messenger" style="width: 40px; height: 40px;">
+                                </a>
                             </li>
                             <li>
-                                <a class="icon-ju-instagram1 normalTip gplus" target="_blank" href="https://www.instagram.com/itapesegdistribuidora/" title="Instagram"></a>
+                                <a class="normalTip gplus" target="_blank" href="{{ $data->instagram }}" title="Instagram">
+                                    <img src="../../insta_icon.png" alt="Instagram" class="social_media_icon">
+                                </a>
                             </li>
                             <li>
-                                <a class="icon-ju-skype normalTip gplus" target="_blank" href="https://join.skype.com/invite/AoIn72qv3F12" title="Skype"></a>
+                                <a class="normalTip gplus" target="_blank" href="{{ $data->skype }}" title="Skype">
+                                    <img src="../../skype_icon.png" alt="Skype" class="social_media_icon">
+                                </a>
                             </li>
                             <li>
-                                <a class="icon-ju-whatsapp normalTip gplus" target="_blank" href="https://api.whatsapp.com/send?phone=551532722768" title="Whatsapp"></a>
-                            </li>
-                            <li>
-                                <a class="icon-ju-youtube normalTip gplus" href="#" title="Google Plus"></a>
+                                <a class="normalTip gplus" target="_blank" href="https://api.whatsapp.com/send?phone={{ $data->whatsapp }}" title="Whatsapp">
+                                    <img src="../../whatsapp_icon.png" alt="Whatsapp" class="social_media_icon">
+                                </a>
                             </li>
                         </ul>
                     </div>
@@ -933,13 +952,20 @@
                     <ul>
 
                         <li>
-                            <a class="icon-ju-messenger normalTip" target="_blank" href="http://www.m.me/itapesegDistribuidora" title="Messenger"></a>
+                            <a class="normalTip facebook" target="_blank" href="{{ $data->messenger }}" title="Messenger">
+                                <img src="../../messenger_icon.png" alt="Messenger" style="width: 40px; height: 40px; margin-top: -3px;">
+                            </a>
+                        </li>
+
+                        <li>
+                            <a class="normalTip gplus" target="_blank" href="{{ $data->skype }}" title="Skype">
+                                <img src="../../skype_icon.png" alt="Skype" class="social_media_icon">
+                            </a>
                         </li>
                         <li>
-                            <a class="icon-ju-whatsapp normalTip" target="_blank" href="https://api.whatsapp.com/send?phone=551532722768" title="Whatsapp"></a>
-                        </li>
-                        <li>
-                            <a class="icon-ju-skype normalTip" target="_blank" href="https://join.skype.com/invite/AoIn72qv3F12" title="Skype"></a>
+                            <a class="normalTip gplus" target="_blank" href="https://api.whatsapp.com/send?phone={{ $data->whatsapp }}" title="Whatsapp">
+                                <img src="../../whatsapp_icon.png" alt="Messenger" class="social_media_icon">
+                            </a>
                         </li>
                     </ul>
                 </div>
