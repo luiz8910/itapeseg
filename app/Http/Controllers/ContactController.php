@@ -44,7 +44,7 @@ class ContactController extends Controller
 
     public function index()
     {
-        $contacts = $this->repository->orderBy('created_at', 'desc')->paginate(10);
+        $contacts = $this->repository->orderBy('created_at', 'desc')->findByField('active', 1)->paginate(5);
 
         $route = 'contact.index';
 

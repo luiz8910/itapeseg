@@ -208,6 +208,22 @@ Route::group(['middleware' => 'auth'], function (){
     Route::get("/informacoes", 'ContactController@company_data')->name('company.data');
 
     Route::post("/informacoes", 'ContactController@company_data_update')->name('company.data.update');
+
+//----------------------------------------------------------------------------------------------------------------------
+
+    //Banners
+
+    Route::get('/banners', 'BannerController@index')->name('banner.index');
+
+    Route::get('/criar_banner', 'BannerController@create')->name('banner.create');
+
+    Route::get('/banner/{id}', 'BannerController@edit')->name('banner.edit');
+
+    Route::post('/banner/{redirect?}', 'BannerController@store')->name('banner.store');
+
+    Route::put('/banner/{id}', 'BannerController@update')->name('banner.update');
+
+    Route::delete('/banner/{id}', 'BannerController@delete');
 });
 
 

@@ -76,7 +76,7 @@
                 <div class="left-sidebar-scroll">
                     <div class="left-sidebar-content">
                         <ul class="sidebar-elements">
-                            <li class="divider">Catálago</li>
+                            {{--<li class="divider">Catálago</li>
                             <li class="active"><a href="{{ route('home') }}"><i class="icon mdi mdi-home"></i><span>Dashboard</span></a>
                             </li>
                             <li class="parent"><a href="javascript:"><i class="icon mdi mdi-labels"></i><span>Produtos</span></a>
@@ -109,14 +109,24 @@
                                     <li><a href="{{ route('product.deleted.category.sub') }}">Excluídos</a>
                                     </li>
                                 </ul>
-                            </li>
+                            </li>--}}
 
 
                             <li class="divider">Site</li>
+                            <li class="">
+                                <a href="{{ route('reorder.menu') }}">
+                                    <i class="icon mdi mdi-menu"></i><span>Menu</span>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="{{ route('banner.index') }}">
+                                    <i class="icon mdi mdi-photo-size-select-large"></i><span>Banner</span>
+                                </a>
+                            </li>
                             <li class="parent">
                                 <a href="#">
                                     <i class="icon mdi mdi-accounts-list-alt"></i>
-                                    <span>Parceiros</span>
+                                    <span>Parceiros (Marcas)</span>
                                 </a>
                                 <ul class="sub-menu">
                                     <li>
@@ -163,50 +173,6 @@
                                         </a>
                                     </li>
 
-                                </ul>
-                            </li>
-                            <li class="parent"><a href="#"><i class="icon mdi mdi-inbox"></i><span>Seções do Site</span></a>
-                                <ul class="sub-menu">
-                                    <li>
-                                        <a href="{{ route('reorder.menu') }}">Reordenar Menu</a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:">Banner</a>
-                                    </li>
-                                    <li><a href="email-read.html">Email Detail</a>
-                                    </li>
-                                    <li><a href="email-compose.html">Email Compose</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="parent"><a href="#"><i class="icon mdi mdi-email"></i><span>Contato</span></a>
-                                <ul class="sub-menu">
-                                    <li><a href="layouts-primary-header.html">Primary Header</a>
-                                    </li>
-                                    <li><a href="layouts-success-header.html">Success Header</a>
-                                    </li>
-                                    <li><a href="layouts-warning-header.html">Warning Header</a>
-                                    </li>
-                                    <li><a href="layouts-danger-header.html">Danger Header</a>
-                                    </li>
-                                    <li><a href="layouts-nosidebar-left.html">Without Left Sidebar</a>
-                                    </li>
-                                    <li><a href="layouts-nosidebar-right.html">Without Right Sidebar</a>
-                                    </li>
-                                    <li><a href="layouts-nosidebars.html">Without Both Sidebars</a>
-                                    </li>
-                                    <li><a href="layouts-fixed-sidebar.html">Fixed Left Sidebar</a>
-                                    </li>
-                                    <li><a href="pages-blank-aside.html">Page Aside</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="parent"><a href="#"><i class="icon mdi mdi-email-open"></i><span>Newsletter</span></a>
-                                <ul class="sub-menu">
-                                    <li><a href="maps-google.html">Google Maps</a>
-                                    </li>
-                                    <li><a href="maps-vector.html">Vector Maps</a>
-                                    </li>
                                 </ul>
                             </li>
 

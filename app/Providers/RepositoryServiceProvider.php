@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use App\Repositories\AboutRepository;
 use App\Repositories\AboutRepositoryEloquent;
+use App\Repositories\BannerRepository;
+use App\Repositories\BannerRepositoryEloquent;
 use App\Repositories\BrandRepository;
 use App\Repositories\BrandRepositoryEloquent;
 use App\Repositories\BrandSegmentRepository;
@@ -58,6 +60,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(ContactRepository::class, ContactRepositoryEloquent::class);
         $this->app->bind(CompanyDataRepository::class, CompanyDataRepositoryEloquent::class);
         $this->app->bind(NewsletterRepository::class, NewsletterRepositoryEloquent::class);
+        $this->app->bind(BannerRepository::class, BannerRepositoryEloquent::class);
     }
 
     /**

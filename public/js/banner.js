@@ -5,10 +5,9 @@ $(function (){
 
 function save()
 {
-
     var action = $("#form").attr('action');
 
-    if(action.search('/faq/1') != -1)
+    if(action.search('/banner/1') != -1)
 
         $("#btn_submit").trigger('click');
 
@@ -24,16 +23,16 @@ function destroy($id)
 {
     var data = {
         title: 'Atenção',
-        text: 'Você deseja excluir esta pergunta?',
+        text: 'Você deseja excluir este banner?',
         button: 'Excluir',
-        success_msg: 'A pergunta foi excluída com sucesso',
+        success_msg: 'O banner foi excluído com sucesso',
         reload: true,
         id: $id
     };
 
 
     var ajax = {
-        url: '/faq/' + $id,
+        url: '/banner/' + $id,
         method: 'DELETE',
         dataType: 'json'
     };

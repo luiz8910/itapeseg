@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use App\Repositories\AboutRepository;
+use App\Repositories\BannerRepository;
 use App\Repositories\BrandRepository;
 use App\Repositories\BrandSegmentRepository;
 use App\Repositories\CompanyDataRepository;
@@ -43,10 +44,15 @@ class SiteController extends Controller
      * @var CompanyDataRepository
      */
     private $data;
+    /**
+     * @var BannerRepository
+     */
+    private $banner;
 
     public function __construct(MenuRepository $menu, BrandRepository $brands,
                                 BrandSegmentRepository $segments, SegBrandChoosesRepository $segBrand,
-                                AboutRepository $abouts, FAQRepository $faq, CompanyDataRepository $data)
+                                AboutRepository $abouts, FAQRepository $faq, CompanyDataRepository $data,
+                                BannerRepository $banner)
     {
         $this->menu = $menu;
         $this->brands = $brands;
@@ -55,6 +61,7 @@ class SiteController extends Controller
         $this->abouts = $abouts;
         $this->faq = $faq;
         $this->data = $data;
+        $this->banner = $banner;
     }
 
     public function home()
@@ -75,7 +82,9 @@ class SiteController extends Controller
 
         $data = $this->data->findByField('id', 1)->first();
 
-        return view('welcome', compact('menus', 'brands', 'segments', 'about', 'faq', 'data'));
+        $banner = $this->banner->orderBy('order')->findByField('active', 1);
+
+        return view('welcome', compact('menus', 'brands', 'segments', 'about', 'faq', 'data', 'banner'));
     }
 
     public function reorder_menu()

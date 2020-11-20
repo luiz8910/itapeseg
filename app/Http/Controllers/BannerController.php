@@ -2,78 +2,62 @@
 
 namespace App\Http\Controllers;
 
-use App\Repositories\FAQRepository;
+use App\Repositories\BannerRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class FAQController extends Controller
+class BannerController extends Controller
 {
     /**
-     * @var FAQRepository
+     * @var BannerRepository
      */
     private $repository;
 
-    public function __construct(FAQRepository $repository)
+    public function __construct(BannerRepository $repository)
     {
         $this->repository = $repository;
     }
 
     public function index()
     {
-        $route = 'FAQ.index';
+        $route = 'banners.index';
 
-        $scripts[] = '../../js/faq.js';
+        $scripts[] = '../../js/banner.js';
 
-        $faq = $this->repository->orderBy('order')->findByField('active', 1);
+        $banner = $this->repository->orderBy('order')->findByField('active', 1);
 
-        return view('index', compact('route', 'faq', 'scripts'));
+        return view('index', compact('route', 'banner', 'scripts'));
     }
 
     public function create()
     {
         $edit = false;
 
-        $route = 'FAQ.form';
+        $route = 'banners.form';
 
-        $links[] = '../../assets/lib/summernote/summernote.css';
+        $scripts[] = '../../js/banner.js';
 
-        $scripts[] = '../../assets/lib/summernote/summernote.min.js';
-        $scripts[] = '../../assets/lib/summernote/summernote-ext-beagle.js';
-        $scripts[] = '../../assets/lib/bootstrap-markdown/js/bootstrap-markdown.js';
-        $scripts[] = '../../assets/lib/markdown-js/markdown.js';
-        $scripts[] = '../../assets/js/app-form-wysiwyg.js';
-        $scripts[] = '../../js/faq.js';
+        $banners = $this->repository->orderBy('order')->findByField('active', 1);
 
-        $faq = $this->repository->orderBy('order')->findByField('active', 1);
-
-        if(count($faq) == 0)
+        if(count($banners) == 0)
             $next_order = 1;
         else
-            $next_order = $faq[count($faq ) - 1]->order + 1;
+            $next_order = $banners[count($banners ) - 1]->order + 1;
 
 
         return view('index', compact('route', 'scripts', 'links', 'edit', 'next_order'));
-
     }
 
     public function edit($id)
     {
         $edit = true;
 
-        $route = 'FAQ.form';
+        $route = 'banners.form';
 
-        $links[] = '../../assets/lib/summernote/summernote.css';
+        $banner = $this->repository->findByField('id', $id)->first();
 
-        $scripts[] = '../../assets/lib/summernote/summernote.min.js';
-        $scripts[] = '../../assets/lib/summernote/summernote-ext-beagle.js';
-        $scripts[] = '../../assets/lib/bootstrap-markdown/js/bootstrap-markdown.js';
-        $scripts[] = '../../assets/lib/markdown-js/markdown.js';
-        $scripts[] = '../../assets/js/app-form-wysiwyg.js';
-
-        $faq = $this->repository->findByField('id', $id)->first();
-
-        if($faq)
-            return view('index', compact('route', 'scripts', 'links', 'faq', 'edit'));
+        if($banner)
+            return view('index', compact('route', 'scripts', 'links', 'banner', 'edit'));
 
         return abort(404);
     }
@@ -88,14 +72,16 @@ class FAQController extends Controller
             return false;
         }
 
-        if ($data['question'] == "") {
-            $request->session()->flash('error.msg', 'Preencha o campo pergunta');
+        $file = $request->file('file');
 
-            return false;
+        if($file)
+        {
+            $path = $file->store('public/uploads');
+
+            $data['picture'] = $path;
         }
-
-        if ($data['answer'] == "") {
-            $request->session()->flash('error.msg', 'Preencha o campo resposta');
+        else{
+            $request->session()->flash('error.msg', 'Faça o upload de uma imagem');
 
             return false;
         }
@@ -124,7 +110,7 @@ class FAQController extends Controller
 
             DB::commit();
 
-            $request->session()->flash('success.msg', 'FAQ foi criado com sucesso');
+            $request->session()->flash('success.msg', 'Banner foi criado com sucesso');
 
         } catch (\Exception $e) {
             DB::rollBack();
@@ -134,40 +120,41 @@ class FAQController extends Controller
             dd($e->getMessage());
         }
 
-        return $redirect ? redirect()->route('faq.create') : redirect()->route('faq.index');
+        return $redirect ? redirect()->route('banner.create') : redirect()->route('banner.index');
     }
 
     public function update(Request $request, $id)
     {
         $data = $request->all();
 
-
-        if ($data['question'] == "") {
-            $request->session()->flash('error.msg', 'Preencha o campo pergunta');
-
-            return false;
-        }
-
-        if ($data['answer'] == "") {
-            $request->session()->flash('error.msg', 'Preencha o campo resposta');
-
-            return false;
-        }
-
-        if($data['order'] == "")
-        {
-            $request->session()->flash('error.msg', 'Selecione a ordem de exibição da pergunta');
-
-            return false;
-        }
-
         DB::beginTransaction();
 
         if(!$this->repository->findByField('id', $id)->first())
         {
-            $request->session()->flash('error.msg', 'Pergunta não encontrada');
+            $request->session()->flash('error.msg', 'Banner não encontrado');
 
             return redirect()->back();
+        }
+
+        if($data['order'] == "")
+        {
+            $request->session()->flash('error.msg', 'Selecione a ordem de exibição do banner');
+
+            return false;
+        }
+
+        $file = $request->file('file');
+
+        if($file)
+        {
+            $path = $file->store('public/uploads');
+
+            $data['picture'] = $path;
+        }
+        else{
+            $request->session()->flash('error.msg', 'Faça o upload de uma imagem');
+
+            return false;
         }
 
         try {
@@ -205,7 +192,7 @@ class FAQController extends Controller
 
             DB::commit();
 
-            $request->session()->flash('success.msg', 'FAQ foi alterado com sucesso');
+            $request->session()->flash('success.msg', 'Banner foi alterado com sucesso');
 
         } catch (\Exception $e) {
             DB::rollBack();
@@ -215,13 +202,13 @@ class FAQController extends Controller
             dd($e->getMessage());
         }
 
-        return redirect()->route('faq.index');
+        return redirect()->route('banner.index');
     }
 
     public function delete($id)
     {
         if(!$this->repository->findByField('id', $id)->first())
-            return json_encode(['status' => false, 'msg' => 'Pergunta não encontrada']);
+            return json_encode(['status' => false, 'msg' => 'Banner não encontrado']);
 
         DB::beginTransaction();
 

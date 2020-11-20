@@ -158,7 +158,27 @@
             <div class="tp-banner">
                 <ul>
                     <!-- SLIDE -->
-                    <li data-transition="fade" data-slotamount="7" data-masterspeed="1500" >
+                    @foreach($banner as $b)
+
+                        <li data-transition="fade" data-slotamount="7" data-masterspeed="1500" >
+                            <!-- MAIN IMAGE -->
+                            <img src="{{ str_replace('public', '/storage', $b->picture) }}"  alt="slidebg1"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+                            <div class="tp-caption normal_text skewfromrightshort customout"
+                                 data-x="325"
+                                 data-y="414"
+                                 data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                                 data-speed="800"
+                                 data-start="2000"
+                                 data-easing="Power4.easeOut"
+                                 data-endspeed="500"
+                                 data-endeasing="Power4.easeIn"
+                                 data-captionhidden="on"
+                                 style="z-index: 7">
+                            </div>
+                        </li>
+                    @endforeach
+
+                    {{--<li data-transition="fade" data-slotamount="7" data-masterspeed="1500" >
                         <!-- MAIN IMAGE -->
                         <img src="http://itapesegdistribuidora.com.br/images/slider/slide1/bg-hiki.jpg"  alt="slidebg1"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
                         <!--<div class="tp-caption customin sfr customout"
@@ -382,8 +402,8 @@
                                 data-endeasing="Power1.easeIn"
                                 data-captionhidden="on"
                                 style="z-index: 6">
-                            </div>
-                        </li>   -->
+                            </div>-->
+                        </li>
 
                         <!-- SLIDE  -->
 
@@ -462,7 +482,7 @@
                              data-captionhidden="on"
                              style="z-index: 6"><img src="http://itapesegdistribuidora.com.br/images/slider/slide3/00_02.png" alt="">
                         </div>
-                    </li>
+                    </li>--}}
                 </ul>
                 <div class="tp-bannertimer"></div>
             </div>
@@ -473,7 +493,7 @@
         <div class="container">
             <div class="row-fluid">
                 <div style="text-align: center; text-decoration: none;" class="span12 probo_box themeapt_animated_text themeapt_text  themeapt_animate_when_almost_visible right-to-left">
-                    <h2>15 3272-2768</h2>
+                    <h2>{{ $data->whatsapp }}</h2>
                 </div>
             </div><!-- /.row-fluid -->
         </div><!--Container-->

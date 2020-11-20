@@ -7,11 +7,11 @@ use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 
 /**
- * Class Contact.
+ * Class Banner.
  *
  * @package namespace App\Models;
  */
-class Contact extends Model implements Transformable
+class Banner extends Model implements Transformable
 {
     use TransformableTrait;
 
@@ -21,7 +21,7 @@ class Contact extends Model implements Transformable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'phone', 'message', 'active'
+        'picture', 'order', 'active'
     ];
 
 }
