@@ -45,7 +45,7 @@ class BannerController extends Controller
             $next_order = $banners[count($banners ) - 1]->order + 1;
 
 
-        return view('index', compact('route', 'scripts', 'links', 'edit', 'next_order'));
+        return view('index', compact('route', 'scripts', 'edit', 'next_order'));
     }
 
     public function edit($id)
@@ -57,7 +57,7 @@ class BannerController extends Controller
         $banner = $this->repository->findByField('id', $id)->first();
 
         if($banner)
-            return view('index', compact('route', 'scripts', 'links', 'banner', 'edit'));
+            return view('index', compact('route', 'scripts', 'banner', 'edit'));
 
         return abort(404);
     }
