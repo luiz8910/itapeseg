@@ -67,7 +67,6 @@ function validateEmail($email)
 function fix_brand_bug()
 {
     $("#all").trigger('click');
-    alert('click');
 }
 
 function sweet_alert_error($msg, $timer) {
