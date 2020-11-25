@@ -34,9 +34,29 @@ $(function (){
         }
     });
 
-    fix_brand_bug();
+    call_sleep();
 
 });
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function call_sleep() {
+    console.log('Taking a break...');
+    await sleep(2000);
+    console.log('Two seconds later, showing sleep in a loop...');
+
+    // Sleep in loop
+    /*for (let i = 0; i < 5; i++) {
+        if (i === 3)
+            await sleep(2000);
+        console.log(i);
+    }*/
+
+    fix_brand_bug();
+}
+
 
 function validateEmail($email)
 {
@@ -47,6 +67,7 @@ function validateEmail($email)
 function fix_brand_bug()
 {
     $("#all").trigger('click');
+    alert('click');
 }
 
 function sweet_alert_error($msg, $timer) {
